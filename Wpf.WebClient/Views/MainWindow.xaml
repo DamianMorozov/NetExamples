@@ -1,0 +1,45 @@
+﻿<Window x:Class="Wpf.WebClient.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        DataContext="{StaticResource ViewModelAppSettings}"
+        Title="WebClient" Width="800" Height="450" Loaded="Window_Loaded">
+
+    <Window.Resources></Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="URL" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <TextBox Name="fieldUrl" Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Link, Mode=TwoWay}"
+                 VerticalAlignment="Center"></TextBox>
+        <ProgressBar Name="progressBar" Margin="5" Grid.Row="0" Grid.Column="3" Minimum="0" Maximum="100" ></ProgressBar>
+
+        <Button Name="buttonFileDownload" Margin="5" Grid.Row="1" Grid.Column="0" Content="File download" Click="ButtonFileDownload_OnClick"></Button>
+        <Button Name="buttonFileDownloadAsync" Margin="5" Grid.Row="1" Grid.Column="1" Content="File download async" Click="ButtonFileDownloadAsync_OnClick"></Button>
+        <Button Name="buttonFileDownloadWithProgress" Margin="5" Grid.Row="1" Grid.Column="2" Content="File download with progress" Click="ButtonFileDownloadWithProgress_OnClick"></Button>
+        <Grid Margin="5" Grid.Row="1" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Content="Buffer's size" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <TextBox Name="fieldBufferSize" Margin="5" Grid.Row="1" Text="{Binding BufferSize, Mode=TwoWay}"
+                     HorizontalAlignment="Center" VerticalAlignment="Center"></TextBox>
+        </Grid>
+
+        <TextBox Name="fieldOut" Margin="5" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" IsReadOnly="True" VerticalScrollBarVisibility="Visible"></TextBox>
+    </Grid>
+</Window>

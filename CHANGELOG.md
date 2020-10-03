@@ -6,8 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.01] - 2020-00-00
+## [0.1.30] - 2020-10-03
 ### Added
 - CHANGELOG.md
 - LICENSE
 - README.md
+- Wpf.WebClient project
