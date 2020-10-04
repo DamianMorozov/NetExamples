@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1DC82770-B737-43EA-BDC0-EAB4F273B538}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Wpf.WebClient</RootNamespace>
-    <AssemblyName>Wpf.WebClient</AssemblyName>
+    <RootNamespace>WPF.WebClient</RootNamespace>
+    <AssemblyName>WPF.WebClient</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -39,13 +39,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -66,10 +61,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Utils\InvokeContentControl.cs" />
-    <Compile Include="Utils\InvokeControl.cs" />
-    <Compile Include="Utils\InvokeProgressBar.cs" />
-    <Compile Include="Utils\InvokeTextBox.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="ViewModels\AppSettings.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -105,6 +96,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WPF.Utils\WPF.Utils\WPF.Utils.csproj">
+      <Project>{72c55012-8676-4ab2-8104-c5c7b6656fc2}</Project>
+      <Name>WPF.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

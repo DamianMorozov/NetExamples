@@ -1,9 +1,11 @@
-﻿namespace Wpf.WebClient
+﻿// ReSharper disable UnusedMember.Global
+
+namespace WPF.WebClient
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App
+    public class App
     {
     }
 }

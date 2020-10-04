@@ -5,11 +5,11 @@ using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
-using Wpf.WebClient.Utils;
-using Wpf.WebClient.ViewModels;
+using WPF.Utils;
+using WPF.WebClient.ViewModels;
 // ReSharper disable UnusedMember.Global
 
-namespace Wpf.WebClient.Views
+namespace WPF.WebClient.Views
 {
     public partial class MainWindow
     {

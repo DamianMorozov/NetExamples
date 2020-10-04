@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Wpf.WebClient.ViewModels
+namespace WPF.WebClient.ViewModels
 {
     /// <summary>
     /// Программные настройки.
