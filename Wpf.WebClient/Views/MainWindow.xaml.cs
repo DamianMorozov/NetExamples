@@ -23,7 +23,7 @@ namespace WPF.WebClient.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _appSet = Utils.Utils.GetSettings(this);
+            _appSet = ViewModels.Utils.GetSettings(this);
         }
 
         private void ButtonFileDownload_OnClick(object sender, RoutedEventArgs e)

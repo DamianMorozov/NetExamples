@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using WPF.WebClient.ViewModels;
 
-namespace WPF.WebClient.Utils
+namespace WPF.WebClient.ViewModels
 {
     internal static class Utils
     {

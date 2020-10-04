@@ -61,7 +61,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="ViewModels\Utils.cs" />
     <Compile Include="ViewModels\AppSettings.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
