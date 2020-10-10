@@ -42,28 +42,28 @@ namespace WPF.WebClient.Views
                             fileDialog.Filter = @"All files|*.*";
                             if (fileDialog.ShowDialog() == true)
                             {
-                                InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{_appSet.Link}"".");
+                                InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{_appSet.Link}"".");
                                 using (var webClient = new System.Net.WebClient())
                                 {
-                                    InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"File to save ""{fileDialog.FileName}"".");
+                                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{fileDialog.FileName}"".");
                                     webClient.DownloadFile(_appSet.Link.ToString(), fileDialog.FileName);
                                 }
-                                InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{_appSet.Link}"".");
-                                InvokeControl.Methods.Focus(fieldOut);
+                                InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{_appSet.Link}"".");
+                                InvokeControl.Focus(fieldOut);
                                 sw.Stop();
                             }
                         }
                     }
                     else
                     {
-                        InvokeTextBox.Methods.AddText(fieldOut, @"FileName is empty!.");
+                        InvokeTextBox.AddText(fieldOut, @"FileName is empty!.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    InvokeTextBox.Methods.AddText(fieldOut, $@"Error: ""{ex.Message}"".");
+                    InvokeTextBox.AddText(fieldOut, $@"Error: ""{ex.Message}"".");
                 }
-                InvokeTextBox.Methods.AddText(fieldOut, @"----------------------------------------------------------------------------------------------------");
+                InvokeTextBox.AddText(fieldOut, @"----------------------------------------------------------------------------------------------------");
             });
         }
 
@@ -83,28 +83,28 @@ namespace WPF.WebClient.Views
                             fileDialog.Filter = @"All files|*.*";
                             if (fileDialog.ShowDialog() == true)
                             {
-                                InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{_appSet.Link}"".");
+                                InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{_appSet.Link}"".");
                                 using (var webClient = new System.Net.WebClient())
                                 {
-                                    InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"File to save ""{fileDialog.FileName}"".");
+                                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{fileDialog.FileName}"".");
                                     webClient.DownloadFileAsync(_appSet.Link, fileDialog.FileName);
                                 }
-                                InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{_appSet.Link}"".");
-                                InvokeControl.Methods.Focus(fieldOut);
+                                InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{_appSet.Link}"".");
+                                InvokeControl.Focus(fieldOut);
                                 sw.Stop();
                             }
                         }
                     }
                     else
                     {
-                        InvokeTextBox.Methods.AddText(fieldOut, @"FileName is empty!.");
+                        InvokeTextBox.AddText(fieldOut, @"FileName is empty!.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    InvokeTextBox.Methods.AddText(fieldOut, $@"Error: ""{ex.Message}"".");
+                    InvokeTextBox.AddText(fieldOut, $@"Error: ""{ex.Message}"".");
                 }
-                InvokeTextBox.Methods.AddText(fieldOut, @"----------------------------------------------------------------------------------------------------");
+                InvokeTextBox.AddText(fieldOut, @"----------------------------------------------------------------------------------------------------");
             });
         }
 
@@ -115,15 +115,15 @@ namespace WPF.WebClient.Views
                 try
                 {
                     long bytesCursor = 0;
-                    if (!int.TryParse(InvokeTextBox.Methods.GetText(fieldBufferSize).Result.ToString(CultureInfo.InvariantCulture),
+                    if (!int.TryParse(InvokeTextBox.GetText(fieldBufferSize).ToString(CultureInfo.InvariantCulture),
                         NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out var bufferSize))
                         bufferSize = 1024;
 
                     if (!string.IsNullOrEmpty(_appSet.Link.ToString()))
                     {
-                        InvokeProgressBar.Methods.SetMinimum(progressBar, 0);
-                        InvokeProgressBar.Methods.SetMaximum(progressBar, 100);
-                        InvokeProgressBar.Methods.SetValue(progressBar, 0);
+                        InvokeProgressBar.SetMinimum(progressBar, 0);
+                        InvokeProgressBar.SetMaximum(progressBar, 100);
+                        InvokeProgressBar.SetValue(progressBar, 0);
                         var sw = Stopwatch.StartNew();
                         var fileDialog = new SaveFileDialog();
                         {
@@ -132,17 +132,17 @@ namespace WPF.WebClient.Views
                             fileDialog.Filter = @"All files|*.*";
                             if (fileDialog.ShowDialog() == true)
                             {
-                                InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{_appSet.Link}"".");
+                                InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{_appSet.Link}"".");
                                 using (var webClient = new System.Net.WebClient())
                                 {
-                                    InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"File to save ""{fileDialog.FileName}"".");
+                                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{fileDialog.FileName}"".");
                                     //webClient.DownloadFileAsync(new Uri(url), fileDialog.FileName);
                                     using (var webRead = webClient.OpenRead(_appSet.Link.ToString()))
                                     {
                                         using (var binaryReader = new BinaryReader(webRead ?? throw new InvalidOperationException()))
                                         {
                                             var bytesTotal = Convert.ToInt64(webClient.ResponseHeaders["Content-Length"]);
-                                            InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"File size {bytesTotal:### ### ###} bytes.");
+                                            InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File size {bytesTotal:### ### ###} bytes.");
                                             if (bytesTotal > 0)
                                             {
                                                 using (var binaryWriter = new BinaryWriter(File.Open(fileDialog.FileName, FileMode.Create)))
@@ -153,33 +153,33 @@ namespace WPF.WebClient.Views
                                                         bytesCursor += bufferSize;
                                                         var setValue = (int)(bytesCursor * 100 / bytesTotal);
                                                         if (setValue > 100) setValue = 100;
-                                                        InvokeProgressBar.Methods.SetValue(progressBar, setValue);
+                                                        InvokeProgressBar.SetValue(progressBar, setValue);
                                                     }
-                                                    InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{_appSet.Link}"".");
+                                                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{_appSet.Link}"".");
                                                 }
                                             }
                                             else
                                             {
-                                                InvokeTextBox.Methods.AddTextFormat(fieldOut, sw, @"Download can not be started!");
+                                                InvokeTextBox.AddTextFormat(fieldOut, sw, @"Download can not be started!");
                                             }
                                         }
                                     }
                                 }
-                                InvokeControl.Methods.Focus(fieldOut);
+                                InvokeControl.Focus(fieldOut);
                                 sw.Stop();
                             }
                         }
                     }
                     else
                     {
-                        InvokeTextBox.Methods.AddText(fieldOut, @"FileName is empty!.");
+                        InvokeTextBox.AddText(fieldOut, @"FileName is empty!.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    InvokeTextBox.Methods.AddText(fieldOut, $@"Error: ""{ex.Message}"".");
+                    InvokeTextBox.AddText(fieldOut, $@"Error: ""{ex.Message}"".");
                 }
-                InvokeTextBox.Methods.AddText(fieldOut, @"----------------------------------------------------------------------------------------------------");
+                InvokeTextBox.AddText(fieldOut, @"----------------------------------------------------------------------------------------------------");
             });
         }
     }
