@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1DC82770-B737-43EA-BDC0-EAB4F273B538}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WPF.WebClient</RootNamespace>
-    <AssemblyName>WPF.WebClient</AssemblyName>
+    <RootNamespace>WPF.Net.Examples</RootNamespace>
+    <AssemblyName>WPF.Net.Examples</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,10 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Wpf.WebClient.App</StartupObject>
+    <StartupObject>WPF.Net.Examples.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml">
@@ -53,6 +54,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\PageProxy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PageHttpService.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PageWebClient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,8 +74,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\BoolToVisibilityConverter.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\Proxy.cs" />
+    <Compile Include="Models\HttpService.cs" />
     <Compile Include="ViewModels\Utils.cs" />
     <Compile Include="ViewModels\AppSettings.cs" />
+    <Compile Include="Views\PageProxy.xaml.cs">
+      <DependentUpon>PageProxy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PageHttpService.xaml.cs">
+      <DependentUpon>PageHttpService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PageWebClient.xaml.cs">
+      <DependentUpon>PageWebClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,9 +120,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\WPF.Utils\WPF.Utils\WPF.Utils.csproj">
       <Project>{72c55012-8676-4ab2-8104-c5c7b6656fc2}</Project>

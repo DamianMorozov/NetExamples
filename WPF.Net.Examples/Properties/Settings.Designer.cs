@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF.WebClient.Properties {
+namespace WPF.Net.Examples.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

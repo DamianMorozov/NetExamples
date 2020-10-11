@@ -1,43 +1,54 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Win32;
+using WPF.Net.Examples.ViewModels;
 using WPF.Utils;
-using WPF.WebClient.ViewModels;
+
 // ReSharper disable UnusedMember.Global
 
-namespace WPF.WebClient.Views
+namespace WPF.Net.Examples.Views
 {
-    public partial class MainWindow
+    public partial class PageWebClient
     {
-        // Программные настройки.
+        #region Private fields and properties
+
         private AppSettings _appSet;
 
-        public MainWindow()
+        #endregion
+
+        #region Constructor and destructor
+
+        public PageWebClient()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        #endregion
+
+        #region Private methods
+
+        private void PageWebClient_Loaded(object sender, RoutedEventArgs e)
         {
             _appSet = ViewModels.Utils.GetSettings(this);
         }
 
         private void ButtonFileDownload_OnClick(object sender, RoutedEventArgs e)
         {
+            InvokeTextBox.Clear(fieldOut);
             Task.Run(() =>
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(_appSet.Link.ToString()))
+                    if (!string.IsNullOrEmpty(_appSet.Link))
                     {
                         var sw = Stopwatch.StartNew();
                         var fileDialog = new SaveFileDialog();
                         {
-                            fileDialog.FileName = Path.GetFileName(_appSet.Link.ToString());
+                            fileDialog.FileName = Path.GetFileName(_appSet.Link);
                             fileDialog.DefaultExt = @".*";
                             fileDialog.Filter = @"All files|*.*";
                             if (fileDialog.ShowDialog() == true)
@@ -46,7 +57,7 @@ namespace WPF.WebClient.Views
                                 using (var webClient = new System.Net.WebClient())
                                 {
                                     InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{fileDialog.FileName}"".");
-                                    webClient.DownloadFile(_appSet.Link.ToString(), fileDialog.FileName);
+                                    webClient.DownloadFile(_appSet.Link, fileDialog.FileName);
                                 }
                                 InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{_appSet.Link}"".");
                                 InvokeControl.Focus(fieldOut);
@@ -69,16 +80,17 @@ namespace WPF.WebClient.Views
 
         private void ButtonFileDownloadAsync_OnClick(object sender, RoutedEventArgs e)
         {
+            InvokeTextBox.Clear(fieldOut);
             Task.Run(() =>
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(_appSet.Link.ToString()))
+                    if (!string.IsNullOrEmpty(_appSet.Link))
                     {
                         var sw = Stopwatch.StartNew();
                         var fileDialog = new SaveFileDialog();
                         {
-                            fileDialog.FileName = Path.GetFileName(_appSet.Link.ToString());
+                            fileDialog.FileName = Path.GetFileName(_appSet.Link);
                             fileDialog.DefaultExt = @".*";
                             fileDialog.Filter = @"All files|*.*";
                             if (fileDialog.ShowDialog() == true)
@@ -87,7 +99,7 @@ namespace WPF.WebClient.Views
                                 using (var webClient = new System.Net.WebClient())
                                 {
                                     InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{fileDialog.FileName}"".");
-                                    webClient.DownloadFileAsync(_appSet.Link, fileDialog.FileName);
+                                    webClient.DownloadFileAsync(new Uri(_appSet.Link), fileDialog.FileName);
                                 }
                                 InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{_appSet.Link}"".");
                                 InvokeControl.Focus(fieldOut);
@@ -110,6 +122,7 @@ namespace WPF.WebClient.Views
 
         private void ButtonFileDownloadWithProgress_OnClick(object sender, RoutedEventArgs e)
         {
+            InvokeTextBox.Clear(fieldOut);
             Task.Run(() =>
             {
                 try
@@ -119,7 +132,7 @@ namespace WPF.WebClient.Views
                         NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out var bufferSize))
                         bufferSize = 1024;
 
-                    if (!string.IsNullOrEmpty(_appSet.Link.ToString()))
+                    if (!string.IsNullOrEmpty(_appSet.Link))
                     {
                         InvokeProgressBar.SetMinimum(progressBar, 0);
                         InvokeProgressBar.SetMaximum(progressBar, 100);
@@ -127,7 +140,7 @@ namespace WPF.WebClient.Views
                         var sw = Stopwatch.StartNew();
                         var fileDialog = new SaveFileDialog();
                         {
-                            fileDialog.FileName = Path.GetFileName(_appSet.Link.ToString());
+                            fileDialog.FileName = Path.GetFileName(_appSet.Link);
                             fileDialog.DefaultExt = @".*";
                             fileDialog.Filter = @"All files|*.*";
                             if (fileDialog.ShowDialog() == true)
@@ -137,7 +150,7 @@ namespace WPF.WebClient.Views
                                 {
                                     InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{fileDialog.FileName}"".");
                                     //webClient.DownloadFileAsync(new Uri(url), fileDialog.FileName);
-                                    using (var webRead = webClient.OpenRead(_appSet.Link.ToString()))
+                                    using (var webRead = webClient.OpenRead(_appSet.Link))
                                     {
                                         using (var binaryReader = new BinaryReader(webRead ?? throw new InvalidOperationException()))
                                         {
@@ -182,5 +195,7 @@ namespace WPF.WebClient.Views
                 InvokeTextBox.AddText(fieldOut, @"----------------------------------------------------------------------------------------------------");
             });
         }
+
+        #endregion
     }
 }
