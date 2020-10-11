@@ -6,9 +6,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.30] - 2020-10-11
+### Changed
+- Renamed WPF.WebClient to WPF.Net.Examples
+### Added
+- Models.Enums
+- Models.HttpService
+- Models.Proxy
+- ViewModels.Utils
+- Views.PageWebClient
+- Views.PageHttpService
+
 ## [0.1.50] - 2020-10-10
 ### Changed
 - WPF.Utils
+### Added
+- ViewModels.AppSettings
 
 ## [0.1.40] - 2020-10-04
 ### Changed
@@ -16,4 +29,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.30] - 2020-10-03
 ### Added
-- Wpf.WebClient project
+- Wpf.WebClient
+- Views.MainWindow
