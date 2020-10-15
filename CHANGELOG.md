@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.31] - 2020-10-15
+### Changed
+- Used nuget package WPF.Utils
+
 ## [0.2.30] - 2020-10-11
 ### Changed
 - Renamed WPF.WebClient to WPF.Net.Examples
