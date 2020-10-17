@@ -4,6 +4,7 @@
     {
         WebClient,
         HttpService,
-        Proxy
+        Proxy,
+        Ping
     }
 }

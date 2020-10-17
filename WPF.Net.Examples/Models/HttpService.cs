@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using WPF.Utils;
+// ReSharper disable LocalizableElement
 
 namespace WPF.Net.Examples.Models
 {
@@ -24,17 +25,6 @@ namespace WPF.Net.Examples.Models
         #endregion
 
         #region Public fields and properties
-
-        private Proxy _proxy;
-        public Proxy Proxy
-        {
-            get => _proxy;
-            set
-            {
-                _proxy = value;
-                OnPropertyRaised();
-            }
-        }
 
         private int _timeout;
         public int Timeout
@@ -69,7 +59,6 @@ namespace WPF.Net.Examples.Models
 
         public void SetupDefault()
         {
-            Proxy = new Proxy();
             Timeout = 5;
             Url = @"http://webcode.me";
         }
@@ -78,7 +67,7 @@ namespace WPF.Net.Examples.Models
 
         #region Public methods
 
-        public async Task Get(string url, bool useProxy, TimeSpan timeout, TextBox fieldOut)
+        public async Task Get(string url, TimeSpan timeout, TextBox fieldOut, bool useProxy, Proxy proxy)
         {
             InvokeTextBox.Clear(fieldOut);
             var sw = Stopwatch.StartNew();
@@ -86,7 +75,7 @@ namespace WPF.Net.Examples.Models
             {
                 InvokeTextBox.AddTextFormat(fieldOut, sw, $"Get started. Use proxy = [{useProxy}]. Timeout = [{timeout}].");
                 InvokeTextBox.AddTextFormat(fieldOut, sw, $"Url = [{url}]");
-                using (var httpClient = GetHttpClient(useProxy))
+                using (var httpClient = GetHttpClient(useProxy, proxy))
                 {
                     if ((int)timeout.TotalSeconds != 0)
                     {
@@ -112,30 +101,32 @@ namespace WPF.Net.Examples.Models
             sw.Stop();
         }
 
-        public HttpClient GetHttpClient(bool useProxy)
+        public HttpClient GetHttpClient(bool useProxy, Proxy proxy)
         {
             if (!useProxy)
             {
                 return new HttpClient(new HttpClientHandler { UseProxy = false });
             }
 
+            if (proxy is null)
+                throw new ArgumentException("Poxy is empty!", nameof(proxy));
             var handler = new HttpClientHandler()
             {
                 UseProxy = true,
-                Proxy = new WebProxy(Proxy.Host),
+                Proxy = new WebProxy(proxy.Host),
             };
             var httpClient = new HttpClient(handler);
-            if (Proxy.UseDefaultCreds)
+            if (proxy.UseDefaultCreds)
             {
                 handler.UseDefaultCredentials = true;
             }
-            else if (!string.IsNullOrWhiteSpace(Proxy.Username) && !string.IsNullOrWhiteSpace(Proxy.Password))
+            else if (!string.IsNullOrWhiteSpace(proxy.Username) && !string.IsNullOrWhiteSpace(proxy.Password))
             {
                 handler.PreAuthenticate = false;
                 handler.UseDefaultCredentials = false;
-                handler.Credentials = !string.IsNullOrWhiteSpace(Proxy.Domain)
-                    ? new NetworkCredential(Proxy.Username, Proxy.Password, Proxy.Domain)
-                    : new NetworkCredential(Proxy.Username, Proxy.Password);
+                handler.Credentials = !string.IsNullOrWhiteSpace(proxy.Domain)
+                    ? new NetworkCredential(proxy.Username, proxy.Password, proxy.Domain)
+                    : new NetworkCredential(proxy.Username, proxy.Password);
             }
             return httpClient;
         }
