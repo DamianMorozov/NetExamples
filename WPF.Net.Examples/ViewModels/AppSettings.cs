@@ -23,6 +23,7 @@ namespace WPF.Net.Examples.ViewModels
                 NavigationUIVisibility = NavigationUIVisibility.Hidden
             };
             HttpService = new HttpService();
+            Proxy = new Proxy();
         }
 
         #endregion
@@ -38,7 +39,7 @@ namespace WPF.Net.Examples.ViewModels
 
         #endregion
 
-        #region Private fields and properties
+        #region Public and private fields and properties
 
         private string _link;
         public string Link
@@ -61,6 +62,32 @@ namespace WPF.Net.Examples.ViewModels
                 OnPropertyRaised();
             }
         }
+
+        private HttpService _httpService;
+        public HttpService HttpService
+        {
+            get => _httpService;
+            set
+            {
+                _httpService = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private Proxy _proxy;
+        public Proxy Proxy
+        {
+            get => _proxy;
+            set
+            {
+                _proxy = value;
+                OnPropertyRaised();
+            }
+        }
+
+        #endregion
+
+        #region Private fields and properties - GUI
 
         private Frame _frame;
         public Frame Frame
@@ -106,7 +133,18 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
-        public EnumWpfPage _activePage;
+        private PagePing _pagePing;
+        public PagePing PagePing
+        {
+            get => _pagePing;
+            set
+            {
+                _pagePing = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private EnumWpfPage _activePage;
 
         public EnumWpfPage ActivePage
         {
@@ -148,20 +186,20 @@ namespace WPF.Net.Examples.ViewModels
                         else
                             Frame.Navigate(PageProxy);
                         break;
+                    case EnumWpfPage.Ping:
+                        if (PagePing == null)
+                            PagePing = new PagePing();
+                        if (Frame.Content != null)
+                        {
+                            if (!(Frame.Content is PagePing))
+                                Frame.Navigate(PagePing);
+                        }
+                        else
+                            Frame.Navigate(PagePing);
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-                OnPropertyRaised();
-            }
-        }
-
-        private HttpService _httpService;
-        public HttpService HttpService
-        {
-            get => _httpService;
-            set
-            {
-                _httpService = value;
                 OnPropertyRaised();
             }
         }

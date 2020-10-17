@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.38] - 2020-10-17
+### Added
+- Views.PagePing
+### Changed
+- Models.Enums
+- Models.HttpService
+- ViewModels.AppSettings
+- Views.MainWindow
+- Views.PageHttpService
+- Views.PageProxy
+
 ## [0.2.31] - 2020-10-15
 ### Changed
 - Used nuget package WPF.Utils
@@ -18,8 +29,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Models.HttpService
 - Models.Proxy
 - ViewModels.Utils
-- Views.PageWebClient
 - Views.PageHttpService
+- Views.PageProxy
+- Views.PageWebClient
 
 ## [0.1.50] - 2020-10-10
 ### Changed
