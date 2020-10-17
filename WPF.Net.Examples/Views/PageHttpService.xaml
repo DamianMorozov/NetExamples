@@ -22,34 +22,34 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="URL" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
-        <TextBox Name="fieldUrl" Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding HttpService.Url, Mode=TwoWay}"
-                 VerticalAlignment="Center"></TextBox>
+        <TextBox Name="fieldUrl" Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding HttpService.Url, Mode=TwoWay}" Background="Transparent" VerticalAlignment="Center"></TextBox>
 
         <Button Name="buttonHttpGetWithoutProxy" Margin="5" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
-                Click="ButtonHttpGetWithoutProxy_OnClick">
+                Click="ButtonHttpGetWithoutProxy_OnClick" Background="Transparent" >
             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"
-                Text="Http Get without proxy" TextWrapping="Wrap"></TextBlock>
+                Text="Http Get without proxy" TextWrapping="Wrap" Background="Transparent" ></TextBlock>
         </Button>
         <Button Name="buttonHttpGetWithProxy" Margin="5" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"
-                Click="ButtonHttpGetWithProxy_OnClick">
+                Click="ButtonHttpGetWithProxy_OnClick" Background="Transparent" >
             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"
-                Text="Http Get with proxy" TextWrapping="Wrap"></TextBlock>
+                Text="Http Get with proxy" TextWrapping="Wrap" Background="Transparent" ></TextBlock>
         </Button>
         <Label Margin="5" Grid.Column="2" Grid.Row="1" Content="Timeout"
-                 VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+                 VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" ></Label>
         <TextBox Name="fieldTimeout" Margin="5" Grid.Column="3" Grid.Row="1" Text="{Binding HttpService.Timeout, Mode=TwoWay}"
-                 VerticalAlignment="Center" TextAlignment="Center"></TextBox>
+                 VerticalAlignment="Center" TextAlignment="Center" Background="Transparent" ></TextBox>
         <Button Name="buttonHttpGetWithoutProxyTimeout" Margin="5" Grid.Row="2" Grid.Column="2" 
-                Click="ButtonHttpGetWithoutProxyTimeout_OnClick">
+                Click="ButtonHttpGetWithoutProxyTimeout_OnClick" Background="Transparent" >
             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"
-                Text="Http Get without proxy and with timeout" TextWrapping="Wrap"></TextBlock>
+                Text="Http Get without proxy and with timeout" TextWrapping="Wrap" Background="Transparent" ></TextBlock>
         </Button>
         <Button Name="buttonHttpGetWithProxyTimeout" Margin="5" Grid.Row="2" Grid.Column="3" 
-                Click="ButtonHttpGetWithProxyTimeout_OnClick" >
+                Click="ButtonHttpGetWithProxyTimeout_OnClick" Background="Transparent" >
             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"
-                Text="Http Get with proxy and with timeout" TextWrapping="Wrap"></TextBlock>
+                Text="Http Get with proxy and with timeout" TextWrapping="Wrap" Background="Transparent" ></TextBlock>
         </Button>
 
-        <TextBox Name="fieldOut" Margin="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" IsReadOnly="True" VerticalScrollBarVisibility="Visible"></TextBox>
+        <TextBox Name="fieldOut" Margin="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" IsReadOnly="True" 
+                 Background="Transparent" VerticalScrollBarVisibility="Visible"></TextBox>
     </Grid>
 </Page>

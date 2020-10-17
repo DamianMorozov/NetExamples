@@ -37,21 +37,21 @@ namespace WPF.Net.Examples.Views
         {
             Task.Run(async () =>
             {
-                await _appSet.HttpService.Get(_appSet.HttpService.Url, false, TimeSpan.FromSeconds(0), fieldOut);
+                await _appSet.HttpService.Get(_appSet.HttpService.Url, TimeSpan.FromSeconds(0), fieldOut, false, null);
             });
         }
         private void ButtonHttpGetWithProxy_OnClick(object sender, RoutedEventArgs e)
         {
             Task.Run(async () =>
             {
-                await _appSet.HttpService.Get(_appSet.HttpService.Url, true, TimeSpan.FromSeconds(0), fieldOut);
+                await _appSet.HttpService.Get(_appSet.HttpService.Url, TimeSpan.FromSeconds(0), fieldOut, true, _appSet.Proxy);
             });
         }
         private void ButtonHttpGetWithoutProxyTimeout_OnClick(object sender, RoutedEventArgs e)
         {
             Task.Run(async () =>
             {
-                await _appSet.HttpService.Get(_appSet.HttpService.Url, false, TimeSpan.FromSeconds(_appSet.HttpService.Timeout), fieldOut);
+                await _appSet.HttpService.Get(_appSet.HttpService.Url, TimeSpan.FromSeconds(_appSet.HttpService.Timeout), fieldOut, false, null);
             });
         }
 
@@ -59,7 +59,7 @@ namespace WPF.Net.Examples.Views
         {
             Task.Run(async () =>
             {
-                await _appSet.HttpService.Get(_appSet.HttpService.Url, false, TimeSpan.FromSeconds(_appSet.HttpService.Timeout), fieldOut);
+                await _appSet.HttpService.Get(_appSet.HttpService.Url, TimeSpan.FromSeconds(_appSet.HttpService.Timeout), fieldOut, false, null);
             });
         }
 

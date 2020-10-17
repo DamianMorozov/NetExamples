@@ -44,6 +44,12 @@ namespace WPF.Net.Examples.Views
             _appSet.ActivePage = EnumWpfPage.Proxy;
         }
         
+
+        private void ButtonPing_OnClick(object sender, RoutedEventArgs e)
+        {
+            _appSet.ActivePage = EnumWpfPage.Ping;
+        }
+        
         #endregion
     }
 }

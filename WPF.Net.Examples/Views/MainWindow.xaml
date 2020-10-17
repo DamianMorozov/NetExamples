@@ -29,6 +29,8 @@
                 Content="HttpService" Click="ButtonHttpService_OnClick"></Button>
         <Button Name="buttonProxy" Grid.Row="2" Grid.Column="0" Margin="5"
                 Content="Proxy" Click="ButtonProxy_OnClick"></Button>
+        <Button Name="buttonPing" Grid.Row="3" Grid.Column="0" Margin="5"
+                Content="Ping" Click="ButtonPing_OnClick"></Button>
 
         <Frame Grid.Row="0" Grid.Column="1" Grid.RowSpan="8"
                Content="{Binding Frame, Mode=OneWay, IsAsync=True}" ></Frame>
