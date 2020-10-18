@@ -10,24 +10,6 @@ namespace WPF.Net.Examples.ViewModels
 {
     public class AppSettings : INotifyPropertyChanged
     {
-        #region Constructor and destructor
-
-        public AppSettings() { SetupDefault(); }
-
-        public void SetupDefault()
-        {
-            Link = @"https://downloadmaster.ru/dm/download/dmaster.exe";
-            BufferSize = 10_240;
-            Frame = new Frame
-            {
-                NavigationUIVisibility = NavigationUIVisibility.Hidden
-            };
-            HttpService = new HttpService();
-            Proxy = new Proxy();
-        }
-
-        #endregion
-
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -40,28 +22,6 @@ namespace WPF.Net.Examples.ViewModels
         #endregion
 
         #region Public and private fields and properties
-
-        private string _link;
-        public string Link
-        {
-            get => _link;
-            set
-            {
-                _link = value;
-                OnPropertyRaised();
-            }
-        }
-
-        private long _bufferSize;
-        public long BufferSize
-        {
-            get => _bufferSize;
-            set
-            {
-                _bufferSize = value;
-                OnPropertyRaised();
-            }
-        }
 
         private HttpService _httpService;
         public HttpService HttpService
@@ -85,8 +45,36 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
+        private WebClientEntity _webClient;
+        public WebClientEntity WebClient
+        {
+            get => _webClient;
+            set
+            {
+                _webClient = value;
+                OnPropertyRaised();
+            }
+        }
+
         #endregion
 
+        #region Constructor and destructor
+
+        public AppSettings() { SetupDefault(); }
+
+        public void SetupDefault()
+        {
+            Frame = new Frame
+            {
+                NavigationUIVisibility = NavigationUIVisibility.Hidden
+            };
+            HttpService = new HttpService();
+            Proxy = new Proxy();
+            WebClient = new WebClientEntity();
+        }
+
+        #endregion
+        
         #region Private fields and properties - GUI
 
         private Frame _frame;
