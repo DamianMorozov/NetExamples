@@ -1,5 +1,8 @@
 # Net.Examples
 
+![Latest Version](https://img.shields.io/github/release/DamianMorozov/Net.Examples.svg)
+![Downloads](https://img.shields.io/github/downloads/DamianMorozov/Net.Examples/total.svg)
+
 ## WPF.Net.Examples
 
 ![](Assets/WPF.Net.Examples.WebClient.png?raw=true)
