@@ -5,6 +5,7 @@
         WebClient,
         HttpService,
         Proxy,
-        Ping
+        Ping,
+        WebRequest
     }
 }

@@ -48,8 +48,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPF.Utils, Version=0.2.15.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPF.Utils.0.2.15\lib\net48\WPF.Utils.dll</HintPath>
+    <Reference Include="WPF.Utils, Version=0.2.19.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPF.Utils.0.2.19\lib\net48\WPF.Utils.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -69,11 +69,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\PageWebRequest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\PageWebClient.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\MainWindow.xaml">
+    <Page Include="Views\WindowMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -83,6 +87,7 @@
     </Compile>
     <Compile Include="Models\BoolToVisibilityConverter.cs" />
     <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\WebRequestEntity.cs" />
     <Compile Include="Models\WebClientEntity.cs" />
     <Compile Include="Models\Proxy.cs" />
     <Compile Include="Models\HttpService.cs" />
@@ -97,11 +102,14 @@
     <Compile Include="Views\PageHttpService.xaml.cs">
       <DependentUpon>PageHttpService.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PageWebRequest.xaml.cs">
+      <DependentUpon>PageWebRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PageWebClient.xaml.cs">
       <DependentUpon>PageWebClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Views\WindowMain.xaml.cs">
+      <DependentUpon>WindowMain.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

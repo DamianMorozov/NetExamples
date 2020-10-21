@@ -101,14 +101,14 @@ namespace WPF.Net.Examples.Models
                     }
                     else
                     {
-                        InvokeTextBox.AddText(fieldOut, @"URL is empty!.");
+                        InvokeTextBox.AddTextFormat(fieldOut, sw, @"URL is empty!.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    InvokeTextBox.AddText(fieldOut, $@"Error: ""{ex.Message}"".");
+                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Error: ""{ex.Message}"".");
                 }
-                InvokeTextBox.AddText(fieldOut, @"----------------------------------------------------------------------------------------------------");
+                InvokeTextBox.AddTextFormat(fieldOut, sw, @"----------------------------------------------------------------------------------------------------");
                 sw.Stop();
             });
         }
@@ -163,14 +163,14 @@ namespace WPF.Net.Examples.Models
                     }
                     else
                     {
-                        InvokeTextBox.AddText(fieldOut, @"URL is empty!.");
+                        InvokeTextBox.AddTextFormat(fieldOut, @"URL is empty!.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    InvokeTextBox.AddText(fieldOut, $@"Error: ""{ex.Message}"".");
+                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Error: ""{ex.Message}"".");
                 }
-                InvokeTextBox.AddText(fieldOut, @"----------------------------------------------------------------------------------------------------");
+                InvokeTextBox.AddTextFormat(fieldOut, sw, @"----------------------------------------------------------------------------------------------------");
                 sw.Stop();
             });
         }

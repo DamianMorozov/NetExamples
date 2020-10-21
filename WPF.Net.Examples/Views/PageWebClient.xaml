@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         DataContext="{StaticResource AppSettings}"
-        Title="WebClient" Width="600" Height="500" Loaded="PageWebClient_Loaded">
+        Title="WebClient"
+        Width="780" Height="600" 
+        Loaded="PageWebClient_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>

@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         DataContext="{StaticResource AppSettings}"
-        Title="HttpService" Width="600" Height="500" Loaded="PageHttpService_Loaded">
+        Title="HttpService"
+        Width="780" Height="600" 
+        Loaded="PageHttpService_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -22,7 +24,8 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="URL" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
-        <TextBox Name="fieldUrl" Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding HttpService.Url, Mode=TwoWay}" Background="Transparent" VerticalAlignment="Center"></TextBox>
+        <TextBox Name="fieldUrl" Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" 
+                 Text="{Binding HttpService.Url, Mode=TwoWay}" Background="Transparent" VerticalAlignment="Center"></TextBox>
 
         <Button Name="buttonHttpGetWithoutProxy" Margin="5" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
                 Click="ButtonHttpGetWithoutProxy_OnClick" Background="Transparent" >

@@ -55,7 +55,6 @@ namespace WPF.Net.Examples.Views
                     }
                 });
             }
-
         }
 
         private void PingWork()

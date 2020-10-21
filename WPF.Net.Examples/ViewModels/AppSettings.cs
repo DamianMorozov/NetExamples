@@ -56,6 +56,17 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
+        private WebRequestEntity _webRequest;
+        public WebRequestEntity WebRequest
+        {
+            get => _webRequest;
+            set
+            {
+                _webRequest = value;
+                OnPropertyRaised();
+            }
+        }
+
         #endregion
 
         #region Constructor and destructor
@@ -71,10 +82,11 @@ namespace WPF.Net.Examples.ViewModels
             HttpService = new HttpService();
             Proxy = new Proxy();
             WebClient = new WebClientEntity();
+            WebRequest = new WebRequestEntity();
         }
 
         #endregion
-        
+
         #region Private fields and properties - GUI
 
         private Frame _frame;
@@ -111,15 +123,6 @@ namespace WPF.Net.Examples.ViewModels
         }
 
         private PageProxy _pageProxy;
-        public PageProxy PageProxy
-        {
-            get => _pageProxy;
-            set
-            {
-                _pageProxy = value;
-                OnPropertyRaised();
-            }
-        }
 
         private PagePing _pagePing;
         public PagePing PagePing
@@ -128,6 +131,17 @@ namespace WPF.Net.Examples.ViewModels
             set
             {
                 _pagePing = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private PageWebRequest _pageWebRequest;
+        public PageWebRequest PageWebRequest
+        {
+            get => _pageWebRequest;
+            set
+            {
+                _pageWebRequest = value;
                 OnPropertyRaised();
             }
         }
@@ -164,15 +178,15 @@ namespace WPF.Net.Examples.ViewModels
                             Frame.Navigate(PageHttpService);
                         break;
                     case EnumWpfPage.Proxy:
-                        if (PageProxy == null)
-                            PageProxy = new PageProxy();
+                        if (_pageProxy == null)
+                            _pageProxy = new PageProxy();
                         if (Frame.Content != null)
                         {
                             if (!(Frame.Content is PageProxy))
-                                Frame.Navigate(PageProxy);
+                                Frame.Navigate(_pageProxy);
                         }
                         else
-                            Frame.Navigate(PageProxy);
+                            Frame.Navigate(_pageProxy);
                         break;
                     case EnumWpfPage.Ping:
                         if (PagePing == null)
@@ -185,12 +199,29 @@ namespace WPF.Net.Examples.ViewModels
                         else
                             Frame.Navigate(PagePing);
                         break;
+                    case EnumWpfPage.WebRequest:
+                        if (PageWebRequest == null)
+                            PageWebRequest = new PageWebRequest();
+                        if (Frame.Content != null)
+                        {
+                            if (!(Frame.Content is PageWebRequest))
+                                Frame.Navigate(PageWebRequest);
+                        }
+                        else
+                            Frame.Navigate(PageWebRequest);
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
                 OnPropertyRaised();
             }
         }
+
+        #endregion
+
+        #region Public and private methods
+
+        //
 
         #endregion
     }

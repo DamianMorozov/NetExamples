@@ -5,7 +5,7 @@ using WPF.Net.Examples.ViewModels;
 
 namespace WPF.Net.Examples.Views
 {
-    public partial class MainWindow
+    public partial class WindowMain
     {
         #region Private fields and properties
 
@@ -15,7 +15,7 @@ namespace WPF.Net.Examples.Views
 
         #region Constructor and destructor
 
-        public MainWindow()
+        public WindowMain()
         {
             InitializeComponent();
         }
@@ -24,12 +24,12 @@ namespace WPF.Net.Examples.Views
 
         #region Private methods
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void WindowMain_Loaded(object sender, RoutedEventArgs e)
         {
             _appSet = ViewModels.Utils.GetSettings(this);
         }
 
-        private void buttonWebClient_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonWebClient_OnClick(object sender, RoutedEventArgs e)
         {
             _appSet.ActivePage = EnumWpfPage.WebClient;
         }
@@ -48,6 +48,11 @@ namespace WPF.Net.Examples.Views
         private void ButtonPing_OnClick(object sender, RoutedEventArgs e)
         {
             _appSet.ActivePage = EnumWpfPage.Ping;
+        }
+
+        private void ButtonWebRequest_OnClick(object sender, RoutedEventArgs e)
+        {
+            _appSet.ActivePage = EnumWpfPage.WebRequest;
         }
         
         #endregion

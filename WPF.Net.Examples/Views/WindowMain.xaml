@@ -1,11 +1,11 @@
-﻿<Window x:Class="WPF.Net.Examples.Views.MainWindow"
+﻿<Window x:Class="WPF.Net.Examples.Views.WindowMain"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         DataContext="{StaticResource AppSettings}"
-        Title="WPF.Net.Examples" Width="900" Height="600" Loaded="Window_Loaded">
+        Title="WPF.Net.Examples" Width="900" Height="600" Loaded="WindowMain_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -24,15 +24,17 @@
         </Grid.ColumnDefinitions>
 
         <Button Name="buttonWebClient" Grid.Row="0" Grid.Column="0" Margin="5"
-                Content="WebClient" Click="buttonWebClient_OnClick"></Button>
+                Content="WebClient" Click="ButtonWebClient_OnClick"></Button>
         <Button Name="buttonHttpService" Grid.Row="1" Grid.Column="0" Margin="5"
                 Content="HttpService" Click="ButtonHttpService_OnClick"></Button>
         <Button Name="buttonProxy" Grid.Row="2" Grid.Column="0" Margin="5"
                 Content="Proxy" Click="ButtonProxy_OnClick"></Button>
         <Button Name="buttonPing" Grid.Row="3" Grid.Column="0" Margin="5"
                 Content="Ping" Click="ButtonPing_OnClick"></Button>
+        <Button Name="buttonWebRequest" Grid.Row="4" Grid.Column="0" Margin="5"
+                Content="WebRequest" Click="ButtonWebRequest_OnClick"></Button>
 
         <Frame Grid.Row="0" Grid.Column="1" Grid.RowSpan="8"
-               Content="{Binding Frame, Mode=OneWay, IsAsync=True}" ></Frame>
+               Content="{Binding Frame, Mode=OneWay, IsAsync=True}" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

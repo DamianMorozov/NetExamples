@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         DataContext="{StaticResource AppSettings}"
-        Title="HttpService" Width="600" Height="500" Loaded="PageProxy_Loaded">
+        Title="HttpService"
+        Width="780" Height="600" 
+        Loaded="PageProxy_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
