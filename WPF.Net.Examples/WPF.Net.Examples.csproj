@@ -90,7 +90,7 @@
     <Compile Include="Models\WebRequestEntity.cs" />
     <Compile Include="Models\WebClientEntity.cs" />
     <Compile Include="Models\Proxy.cs" />
-    <Compile Include="Models\HttpService.cs" />
+    <Compile Include="Models\HttpServiceEntity.cs" />
     <Compile Include="ViewModels\Utils.cs" />
     <Compile Include="ViewModels\AppSettings.cs" />
     <Compile Include="Views\PagePing.xaml.cs">
