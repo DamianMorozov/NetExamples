@@ -25,7 +25,8 @@
 
         <Label Content="URL" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
         <TextBox Name="fieldUrl" Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" 
-                 Text="{Binding HttpService.Url, Mode=TwoWay}" Background="Transparent" VerticalAlignment="Center"></TextBox>
+                 Text="{Binding HttpService.Url, Mode=TwoWay, IsAsync=True}"
+                 Background="Transparent" VerticalAlignment="Center"></TextBox>
 
         <Button Name="buttonHttpGetWithoutProxy" Margin="5" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
                 Click="ButtonHttpGetWithoutProxy_OnClick" Background="Transparent" >
@@ -39,7 +40,8 @@
         </Button>
         <Label Margin="5" Grid.Column="2" Grid.Row="1" Content="Timeout"
                  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" ></Label>
-        <TextBox Name="fieldTimeout" Margin="5" Grid.Column="3" Grid.Row="1" Text="{Binding HttpService.Timeout, Mode=TwoWay}"
+        <TextBox Name="fieldTimeout" Margin="5" Grid.Column="3" Grid.Row="1" 
+                 Text="{Binding HttpService.Timeout, Mode=TwoWay, IsAsync=True}"
                  VerticalAlignment="Center" TextAlignment="Center" Background="Transparent" ></TextBox>
         <Button Name="buttonHttpGetWithoutProxyTimeout" Margin="5" Grid.Row="2" Grid.Column="2" 
                 Click="ButtonHttpGetWithoutProxyTimeout_OnClick" Background="Transparent" >

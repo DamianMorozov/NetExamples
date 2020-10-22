@@ -1,11 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using WPF.Net.Examples.ViewModels;
-// ReSharper disable IdentifierTypo
-// ReSharper disable UnusedMember.Local
-
-// ReSharper disable UnusedMember.Global
 
 namespace WPF.Net.Examples.Views
 {
@@ -35,32 +29,20 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonHttpGetWithoutProxy_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Run(async () =>
-            {
-                await _appSet.HttpService.Get(_appSet.HttpService.Url, TimeSpan.FromSeconds(0), fieldOut, false, null);
-            });
+            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, false, null, false);
         }
         private void ButtonHttpGetWithProxy_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Run(async () =>
-            {
-                await _appSet.HttpService.Get(_appSet.HttpService.Url, TimeSpan.FromSeconds(0), fieldOut, true, _appSet.Proxy);
-            });
+            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, true, _appSet.Proxy, false);
         }
         private void ButtonHttpGetWithoutProxyTimeout_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Run(async () =>
-            {
-                await _appSet.HttpService.Get(_appSet.HttpService.Url, TimeSpan.FromSeconds(_appSet.HttpService.Timeout), fieldOut, false, null);
-            });
+            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, false, null, true);
         }
 
         private void ButtonHttpGetWithProxyTimeout_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Run(async () =>
-            {
-                await _appSet.HttpService.Get(_appSet.HttpService.Url, TimeSpan.FromSeconds(_appSet.HttpService.Timeout), fieldOut, false, null);
-            });
+            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, false, null, true);
         }
 
         #endregion

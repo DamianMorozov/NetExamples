@@ -11,7 +11,7 @@ using WPF.Utils;
 
 namespace WPF.Net.Examples.Models
 {
-    public class HttpService
+    public class HttpServiceEntity
     {
         #region INotifyPropertyChanged
 
@@ -48,18 +48,20 @@ namespace WPF.Net.Examples.Models
             }
         }
 
+        private Task _task;
+
         #endregion
 
         #region Constructor and destructor
 
-        public HttpService()
+        public HttpServiceEntity()
         {
             SetupDefault();
         }
 
         public void SetupDefault()
         {
-            Timeout = 5;
+            Timeout = 5_000;
             Url = @"http://webcode.me";
         }
 
@@ -67,20 +69,35 @@ namespace WPF.Net.Examples.Models
 
         #region Public methods
 
-        public async Task Get(string url, TimeSpan timeout, TextBox fieldOut, bool useProxy, Proxy proxy)
+        public void Get(string url, TextBox fieldOut, bool useProxy, Proxy proxy, bool isTimeout)
         {
+            if (!(_task is null))
+            {
+                if (_task.Status == TaskStatus.RanToCompletion)
+                {
+                    _task.Dispose();
+                    _task = null;
+                }
+            }
+            _task = Task.Run(async () =>
+            {
+                await GetAsync(url, fieldOut, useProxy, proxy, isTimeout);
+            });
+        }
+
+        public async Task GetAsync(string url, TextBox fieldOut, bool useProxy, Proxy proxy, bool isTimeout)
+        {
+            await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(true);
             InvokeTextBox.Clear(fieldOut);
             var sw = Stopwatch.StartNew();
             try
             {
-                InvokeTextBox.AddTextFormat(fieldOut, sw, $"Get started. Use proxy = [{useProxy}]. Timeout = [{timeout}].");
+                InvokeTextBox.AddTextFormat(fieldOut, sw, $"Get started. Use proxy = [{useProxy}]. Timeout = [{Timeout}].");
                 InvokeTextBox.AddTextFormat(fieldOut, sw, $"Url = [{url}]");
                 using (var httpClient = GetHttpClient(useProxy, proxy))
                 {
-                    if ((int)timeout.TotalSeconds != 0)
-                    {
-                        httpClient.Timeout = timeout;
-                    }
+                    if (isTimeout)
+                        httpClient.Timeout = TimeSpan.FromMilliseconds(Timeout);
                     var response = await httpClient.GetAsync(url);
                     InvokeTextBox.AddTextFormat(fieldOut, sw, $"Status code: {response.StatusCode}");
                     var rawContent = await response.Content.ReadAsStringAsync();

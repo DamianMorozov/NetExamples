@@ -23,8 +23,8 @@ namespace WPF.Net.Examples.ViewModels
 
         #region Public and private fields and properties
 
-        private HttpService _httpService;
-        public HttpService HttpService
+        private HttpServiceEntity _httpService;
+        public HttpServiceEntity HttpService
         {
             get => _httpService;
             set
@@ -79,7 +79,7 @@ namespace WPF.Net.Examples.ViewModels
             {
                 NavigationUIVisibility = NavigationUIVisibility.Hidden
             };
-            HttpService = new HttpService();
+            HttpService = new HttpServiceEntity();
             Proxy = new Proxy();
             WebClient = new WebClientEntity();
             WebRequest = new WebRequestEntity();
