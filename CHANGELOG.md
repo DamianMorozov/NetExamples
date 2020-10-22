@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.2.49] - 2020-10-22
+## [0.2.51] - 2020-10-22
 ### Changed
 - Models.HttpServiceEntity
 - Models.WebClientEntity
