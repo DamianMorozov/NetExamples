@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.47] - 2020-10-22
+### Changed
+- Models.WebClientEntity
+- Models.WebRequestEntity
+- Views.PageWebRequest
+
 ## [0.2.44] - 2020-10-21
 ### Added
 - Models.WebRequestEntity
