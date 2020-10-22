@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using WPF.Net.Examples.ViewModels;
 
 // ReSharper disable UnusedMember.Global
@@ -32,26 +31,17 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonFileDownload_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Run(async () =>
-            {
-                await _appSet.WebClient.Download(fieldOut, false);
-            });
+            _appSet.WebClient.Download(fieldOut, false, progressBar);
         }
 
         private void ButtonFileDownloadAsync_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Run(async () =>
-            {
-                await _appSet.WebClient.Download(fieldOut, true);
-            });
+            _appSet.WebClient.Download(fieldOut, true, progressBar);
         }
 
         private void ButtonFileDownloadWithProgress_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Run(async () =>
-            {
-                await _appSet.WebClient.DownloadWithBuffer(fieldOut, progressBar);
-            });
+            _appSet.WebClient.DownloadWithBuffer(fieldOut, progressBar);
         }
 
         #endregion

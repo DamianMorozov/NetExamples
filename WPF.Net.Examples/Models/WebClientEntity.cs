@@ -57,6 +57,8 @@ namespace WPF.Net.Examples.Models
             }
         }
 
+        private Task _task;
+
         #endregion
 
         #region Constructor and destructor
@@ -77,102 +79,134 @@ namespace WPF.Net.Examples.Models
 
         #region Public methods
 
-        public async Task Download(TextBox fieldOut, bool isAsync)
+        public void Download(TextBox fieldOut, bool isAsync, ProgressBar progressBar)
         {
-            await Task.Run(() =>
+            if (!(_task is null))
             {
-                var sw = Stopwatch.StartNew();
-                try
+                if (_task.Status == TaskStatus.RanToCompletion)
                 {
-                    InvokeTextBox.Clear(fieldOut);
-                    if (!string.IsNullOrEmpty(Url))
-                    {
-                        InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{Url}"".");
-                        using (var webClient = new System.Net.WebClient())
-                        {
-                            InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{FileName}"".");
-                            if (isAsync)
-                                webClient.DownloadFileAsync(new Uri(Url), FileName);
-                            else
-                                webClient.DownloadFile(new Uri(Url), FileName);
-                        }
-                        InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{Url}"".");
-                        InvokeControl.Focus(fieldOut);
-                    }
-                    else
-                    {
-                        InvokeTextBox.AddTextFormat(fieldOut, sw, @"URL is empty!.");
-                    }
+                    _task.Dispose();
+                    _task = null;
                 }
-                catch (Exception ex)
-                {
-                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Error: ""{ex.Message}"".");
-                }
-                InvokeTextBox.AddTextFormat(fieldOut, sw, @"----------------------------------------------------------------------------------------------------");
-                sw.Stop();
+            }
+            _task = Task.Run(async () =>
+            {
+                await DownloadAsync(fieldOut, isAsync, progressBar);
             });
         }
 
-        public async Task DownloadWithBuffer(TextBox fieldOut, ProgressBar progressBar)
+        private async Task DownloadAsync(TextBox fieldOut, bool isAsync, ProgressBar progressBar)
         {
-            await Task.Run(() =>
+            await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(true);
+            var sw = Stopwatch.StartNew();
+            try
             {
-                var sw = Stopwatch.StartNew();
-                try
+                InvokeProgressBar.SetMinimum(progressBar, 0);
+                InvokeProgressBar.SetMaximum(progressBar, 100);
+                InvokeProgressBar.SetValue(progressBar, 0);
+                InvokeTextBox.Clear(fieldOut);
+                if (!string.IsNullOrEmpty(Url))
                 {
-                    InvokeTextBox.Clear(fieldOut);
-                    InvokeProgressBar.SetMinimum(progressBar, 0);
-                    InvokeProgressBar.SetMaximum(progressBar, 100);
-                    InvokeProgressBar.SetValue(progressBar, 0);
-                    if (!string.IsNullOrEmpty(Url))
+                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{Url}"".");
+                    using (var webClient = new System.Net.WebClient())
                     {
-                        long bytesCursor = 0;
-                        InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{Url}"".");
-                        using (var webClient = new System.Net.WebClient())
+                        InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{FileName}"".");
+                        if (isAsync)
+                            webClient.DownloadFileAsync(new Uri(Url), FileName);
+                        else
+                            webClient.DownloadFile(new Uri(Url), FileName);
+                    }
+                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{Url}"".");
+                    InvokeControl.Focus(fieldOut);
+                }
+                else
+                {
+                    InvokeTextBox.AddTextFormat(fieldOut, sw, @"URL is empty!.");
+                }
+                InvokeProgressBar.SetValue(progressBar, 100);
+            }
+            catch (Exception ex)
+            {
+                InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Error: ""{ex.Message}"".");
+            }
+            InvokeTextBox.AddTextFormat(fieldOut, sw, @"----------------------------------------------------------------------------------------------------");
+            sw.Stop();
+        }
+
+        public void DownloadWithBuffer(TextBox fieldOut, ProgressBar progressBar)
+        {
+            if (!(_task is null))
+            {
+                if (_task.Status == TaskStatus.RanToCompletion)
+                {
+                    _task.Dispose();
+                    _task = null;
+                }
+            }
+            _task = Task.Run(async () =>
+            {
+                await DownloadWithBufferAsync(fieldOut, progressBar);
+            });
+        }
+
+        private async Task DownloadWithBufferAsync(TextBox fieldOut, ProgressBar progressBar)
+        {
+            await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(true);
+            var sw = Stopwatch.StartNew();
+            try
+            {
+                InvokeTextBox.Clear(fieldOut);
+                InvokeProgressBar.SetMinimum(progressBar, 0);
+                InvokeProgressBar.SetMaximum(progressBar, 100);
+                InvokeProgressBar.SetValue(progressBar, 0);
+                if (!string.IsNullOrEmpty(Url))
+                {
+                    long bytesCursor = 0;
+                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{Url}"".");
+                    using (var webClient = new System.Net.WebClient())
+                    {
+                        InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{FileName}"".");
+                        //webClient.DownloadFile(new Uri(Url), FileName);
+                        using (var webRead = webClient.OpenRead(Url))
                         {
-                            InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{FileName}"".");
-                            //webClient.DownloadFile(new Uri(Url), FileName);
-                            using (var webRead = webClient.OpenRead(Url))
+                            using (var binaryReader = new BinaryReader(webRead ?? throw new InvalidOperationException()))
                             {
-                                using (var binaryReader = new BinaryReader(webRead ?? throw new InvalidOperationException()))
+                                var bytesTotal = Convert.ToInt64(webClient.ResponseHeaders["Content-Length"]);
+                                InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File size {bytesTotal:### ### ###} bytes.");
+                                if (bytesTotal > 0)
                                 {
-                                    var bytesTotal = Convert.ToInt64(webClient.ResponseHeaders["Content-Length"]);
-                                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File size {bytesTotal:### ### ###} bytes.");
-                                    if (bytesTotal > 0)
+                                    using (var binaryWriter = new BinaryWriter(File.Open(FileName, FileMode.Create)))
                                     {
-                                        using (var binaryWriter = new BinaryWriter(File.Open(FileName, FileMode.Create)))
+                                        while (bytesCursor < bytesTotal)
                                         {
-                                            while (bytesCursor < bytesTotal)
-                                            {
-                                                binaryWriter.Write(binaryReader.ReadBytes(BufferSize));
-                                                bytesCursor += BufferSize;
-                                                var setValue = (int)(bytesCursor * 100 / bytesTotal);
-                                                if (setValue > 100) setValue = 100;
-                                                InvokeProgressBar.SetValue(progressBar, setValue);
-                                            }
-                                            InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{Url}"".");
+                                            binaryWriter.Write(binaryReader.ReadBytes(BufferSize));
+                                            bytesCursor += BufferSize;
+                                            var setValue = (int)(bytesCursor * 100 / bytesTotal);
+                                            if (setValue > 100) setValue = 100;
+                                            InvokeProgressBar.SetValue(progressBar, setValue);
                                         }
+                                        InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{Url}"".");
                                     }
-                                    else
-                                    {
-                                        InvokeTextBox.AddTextFormat(fieldOut, sw, @"Download can not be started!");
-                                    }
+                                }
+                                else
+                                {
+                                    InvokeTextBox.AddTextFormat(fieldOut, sw, @"Download can not be started!");
                                 }
                             }
                         }
                     }
-                    else
-                    {
-                        InvokeTextBox.AddTextFormat(fieldOut, @"URL is empty!.");
-                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Error: ""{ex.Message}"".");
+                    InvokeTextBox.AddTextFormat(fieldOut, @"URL is empty!.");
                 }
-                InvokeTextBox.AddTextFormat(fieldOut, sw, @"----------------------------------------------------------------------------------------------------");
-                sw.Stop();
-            });
+            }
+            catch (Exception ex)
+            {
+                InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Error: ""{ex.Message}"".");
+            }
+            InvokeTextBox.AddTextFormat(fieldOut, sw, @"----------------------------------------------------------------------------------------------------");
+            sw.Stop();
         }
 
         #endregion
