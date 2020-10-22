@@ -35,6 +35,17 @@ namespace WPF.Net.Examples.Models
             }
         }
 
+        private string _urlPost;
+        public string UrlPost
+        {
+            get => _urlPost;
+            set
+            {
+                _urlPost = value;
+                OnPropertyRaised();
+            }
+        }
+
         private string _login;
         public string Login
         {
@@ -57,6 +68,27 @@ namespace WPF.Net.Examples.Models
             }
         }
 
+        private bool _postMethod;
+        public bool PostMethod
+        {
+            get => _postMethod;
+            set
+            {
+                _postMethod = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private string _postQuery;
+        public string PostQuery
+        {
+            get => _postQuery;
+            set
+            {
+                _postQuery = value;
+                OnPropertyRaised();
+            }
+        }
 
         private Task _task;
 
@@ -72,8 +104,11 @@ namespace WPF.Net.Examples.Models
         public void SetupDefault()
         {
             Url = @"https://www.google.com";
+            UrlPost = @"https://httpbin.org/post";
             Login = string.Empty;
             Password = string.Empty;
+            PostMethod = false;
+            PostQuery = @"";
         }
 
         #endregion
@@ -105,7 +140,26 @@ namespace WPF.Net.Examples.Models
             {
                 InvokeWebBrowser.SetSource(webBrowser, null);
                 InvokeTextBox.Clear(textBox);
-                var webRequest = WebRequest.Create(Url);
+                WebRequest webRequest;
+                
+                if (PostMethod)
+                {
+                    webRequest = WebRequest.Create(UrlPost);
+                    webRequest.Method = @"POST";
+                    var byteArray = System.Text.Encoding.UTF8.GetBytes(PostQuery);
+                    webRequest.ContentType = @"application/x-www-form-urlencoded";
+                    webRequest.ContentLength = byteArray.Length;
+                    using (var dataStream = webRequest.GetRequestStream())
+                    {
+                        dataStream.Write(byteArray, 0, byteArray.Length);
+                        dataStream.Close();
+                    }
+                }
+                else
+                {
+                    webRequest = WebRequest.Create(Url);
+                }
+
                 if (!string.IsNullOrEmpty(Login))
                     webRequest.Credentials = new NetworkCredential(Login, Password);
 

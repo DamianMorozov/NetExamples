@@ -14,8 +14,9 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -27,24 +28,38 @@
         <Button Name="buttonWebRequest" Margin="5" Background="Transparent" Content="WebRequest" 
                 Click="ButtonWebRequest_OnClick"></Button>
         <TextBox Name="textBoxUrl" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
-                 Text="{Binding Path=WebRequest.Url}" 
+                 Text="{Binding Path=WebRequest.Url, Mode=TwoWay, IsAsync=True}" 
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                 Margin="2" Background="Transparent"></TextBox>
+        
+        <CheckBox Name="checkBoxPostMethod" Grid.Row="1" Grid.Column="0" Content="Post method"
+                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"
+                  IsChecked="{Binding Path=WebRequest.PostMethod, Mode=TwoWay, IsAsync=True}"></CheckBox>
+        <TextBox Name="textBoxUrlPost" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+                 Text="{Binding Path=WebRequest.UrlPost, Mode=TwoWay, IsAsync=True}" 
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                 Margin="2" Background="Transparent"></TextBox>
+        <Label Grid.Row="2" Grid.Column="0" Margin="2" Background="Transparent"
+               Content="Post query" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+        <TextBox Name="textBoxPostQuery" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"
+                 Text="{Binding Path=WebRequest.PostQuery, Mode=TwoWay, IsAsync=True}" 
                  HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                  Margin="2" Background="Transparent"></TextBox>
 
-        <Label Grid.Row="1" Grid.Column="0" Margin="2" Background="Transparent"
+        <Label Grid.Row="3" Grid.Column="0" Margin="2" Background="Transparent"
                Content="Login" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
-        <TextBox Name="textBoxLogin" Grid.Row="1" Grid.Column="1" Margin="2" Background="Transparent"
+        <TextBox Name="textBoxLogin" Grid.Row="3" Grid.Column="1" Margin="2" Background="Transparent"
                  Text="{Binding Path=WebRequest.Login, Mode=TwoWay, IsAsync=True}"
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
-        <Label Grid.Row="1" Grid.Column="2" Margin="2" Background="Transparent"
+        <Label Grid.Row="3" Grid.Column="2" Margin="2" Background="Transparent"
                Content="Password" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
-        <TextBox Name="textBoxPassword" Grid.Row="1" Grid.Column="3" Margin="2" Background="Transparent"
+        <TextBox Name="textBoxPassword" Grid.Row="3" Grid.Column="3" Margin="2" Background="Transparent"
                  Text="{Binding Path=WebRequest.Password, Mode=TwoWay, IsAsync=True}"
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
-        <TextBox Name="fieldOut" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" 
+        <TextBox Name="fieldOut" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" 
                  Margin="2" Background="Transparent"></TextBox>
-        <WebBrowser Name="webBrowser" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
+        <WebBrowser Name="webBrowser" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4"
                     Margin="2" ></WebBrowser>
     </Grid>
 </Page>
