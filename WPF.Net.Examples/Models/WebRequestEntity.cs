@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -35,9 +34,31 @@ namespace WPF.Net.Examples.Models
                 OnPropertyRaised();
             }
         }
-        
+
+        private string _login;
+        public string Login
+        {
+            get => _login;
+            set
+            {
+                _login = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private string _password;
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = value;
+                OnPropertyRaised();
+            }
+        }
+
+
         private Task _task;
-        private int _timeout = 100;
 
         #endregion
 
@@ -51,59 +72,51 @@ namespace WPF.Net.Examples.Models
         public void SetupDefault()
         {
             Url = @"https://www.google.com";
+            Login = string.Empty;
+            Password = string.Empty;
         }
 
         #endregion
 
         #region Public methods
 
-        public void OpenTask(WebBrowser webBrowser, bool isLogin, string login, string password, TextBox textBox)
+        public void OpenTask(WebBrowser webBrowser, TextBox textBox)
         {
-            if (_task is null)
+            if (!(_task is null))
             {
-                _task = Task.Run(async () =>
+                if (_task.Status == TaskStatus.RanToCompletion)
                 {
-                    Work(webBrowser, isLogin, login, password, textBox);
-                    await Task.Delay(TimeSpan.FromMilliseconds(_timeout));
-                });
+                    _task.Dispose();
+                    _task = null;
+                }
             }
+            _task = Task.Run(async () =>
+            {
+                await CreateTaskAsync(webBrowser, textBox);
+            });
         }
 
-        private void Work(WebBrowser webBrowser, bool isLogin, string login, string password, TextBox textBox)
+        private async Task CreateTaskAsync(WebBrowser webBrowser, TextBox textBox)
         {
+            await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(true);
             var sw = Stopwatch.StartNew();
             InvokeTextBox.AddTextFormat(textBox, sw, @"Work is started.");
             try
             {
-                //webBrowser.Url = null;
-                //webBrowser.DataBindings.Clear();
                 InvokeWebBrowser.SetSource(webBrowser, null);
-                //webBrowser.DataContext = null;
                 InvokeTextBox.Clear(textBox);
                 var webRequest = WebRequest.Create(Url);
-                if (isLogin)
-                    webRequest.Credentials = new NetworkCredential(login, password);
+                if (!string.IsNullOrEmpty(Login))
+                    webRequest.Credentials = new NetworkCredential(Login, Password);
 
                 using (var webResponse = webRequest.GetResponse())
                 {
-                    // Headers
                     var headers = webResponse.Headers;
                     for (var i = 0; i < headers.Count; i++)
                     {
                         InvokeTextBox.AddTextFormat(textBox, sw, $@"{headers.GetKey(i)}: {headers[i]}");
                     }
-
-                    InvokeTextBox.AddTextFormat(textBox, sw,
-                        @"StatusDescription = " + ((HttpWebResponse) webResponse).StatusDescription);
-
-                    //using (var stream = webResponse.GetResponseStream())
-                    //{
-                    //    using (var streamReader = new StreamReader(stream ?? throw new InvalidOperationException()))
-                    //    {
-                    //        webBrowser.Text = streamReader.ReadToEnd();
-                    //        streamReader.Close();
-                    //    }
-                    //}
+                    InvokeTextBox.AddTextFormat(textBox, sw, @"StatusDescription = " + ((HttpWebResponse)webResponse).StatusDescription);
                     InvokeWebBrowser.SetSource(webBrowser, webRequest.RequestUri);
                     webResponse.Close();
                 }
@@ -112,10 +125,10 @@ namespace WPF.Net.Examples.Models
             {
                 if (ex.Status == WebExceptionStatus.ProtocolError)
                 {
-                    var httpResponse = (HttpWebResponse) ex.Response;
+                    var httpResponse = (HttpWebResponse)ex.Response;
                     InvokeTextBox.AddTextFormat(textBox, sw,
                         @"WebException.ProtocolError: " +
-                        $@"{(int) httpResponse.StatusCode} - {httpResponse.StatusCode}");
+                        $@"{(int)httpResponse.StatusCode} - {httpResponse.StatusCode}");
                 }
                 else
                 {
@@ -132,7 +145,6 @@ namespace WPF.Net.Examples.Models
             }
             sw.Stop();
         }
-
 
         #endregion
     }

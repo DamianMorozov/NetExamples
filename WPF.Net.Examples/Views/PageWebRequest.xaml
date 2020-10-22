@@ -11,7 +11,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
@@ -21,16 +21,30 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Button Name="buttonWebRequest" Margin="5" Background="Transparent" Content="WebRequest" 
                 Click="ButtonWebRequest_OnClick"></Button>
-        <TextBox Name="textBoxUrl" Margin="5" Background="Transparent" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                 Text="{Binding Path=WebRequest.Url}" ></TextBox>
-
-        <TextBox Name="fieldOut" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" 
+        <TextBox Name="textBoxUrl" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+                 Text="{Binding Path=WebRequest.Url}" 
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                  Margin="2" Background="Transparent"></TextBox>
-        <WebBrowser Name="webBrowser" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+
+        <Label Grid.Row="1" Grid.Column="0" Margin="2" Background="Transparent"
+               Content="Login" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+        <TextBox Name="textBoxLogin" Grid.Row="1" Grid.Column="1" Margin="2" Background="Transparent"
+                 Text="{Binding Path=WebRequest.Login, Mode=TwoWay, IsAsync=True}"
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+        <Label Grid.Row="1" Grid.Column="2" Margin="2" Background="Transparent"
+               Content="Password" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+        <TextBox Name="textBoxPassword" Grid.Row="1" Grid.Column="3" Margin="2" Background="Transparent"
+                 Text="{Binding Path=WebRequest.Password, Mode=TwoWay, IsAsync=True}"
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+
+        <TextBox Name="fieldOut" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" 
+                 Margin="2" Background="Transparent"></TextBox>
+        <WebBrowser Name="webBrowser" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
                     Margin="2" ></WebBrowser>
     </Grid>
 </Page>

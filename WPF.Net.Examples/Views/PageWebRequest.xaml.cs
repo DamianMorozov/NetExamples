@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using WPF.Net.Examples.ViewModels;
 
 // ReSharper disable UnusedMember.Global
@@ -32,9 +31,9 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonWebRequest_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.WebRequest.OpenTask(webBrowser, false, string.Empty, string.Empty, fieldOut);
+            _appSet.WebRequest.OpenTask(webBrowser, fieldOut);
         }
-        
+
         #endregion
     }
 }
