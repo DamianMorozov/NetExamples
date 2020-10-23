@@ -34,8 +34,8 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
-        private Proxy _proxy;
-        public Proxy Proxy
+        private ProxyEntity _proxy;
+        public ProxyEntity Proxy
         {
             get => _proxy;
             set
@@ -67,6 +67,17 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
+        private PingEntity _ping;
+        public PingEntity Ping
+        {
+            get => _ping;
+            set
+            {
+                _ping = value;
+                OnPropertyRaised();
+            }
+        }
+
         #endregion
 
         #region Constructor and destructor
@@ -80,9 +91,10 @@ namespace WPF.Net.Examples.ViewModels
                 NavigationUIVisibility = NavigationUIVisibility.Hidden
             };
             HttpService = new HttpServiceEntity();
-            Proxy = new Proxy();
+            Proxy = new ProxyEntity();
             WebClient = new WebClientEntity();
             WebRequest = new WebRequestEntity();
+            Ping = new PingEntity();
         }
 
         #endregion

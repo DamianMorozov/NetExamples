@@ -87,9 +87,10 @@
     </Compile>
     <Compile Include="Models\BoolToVisibilityConverter.cs" />
     <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\PingEntity.cs" />
     <Compile Include="Models\WebRequestEntity.cs" />
     <Compile Include="Models\WebClientEntity.cs" />
-    <Compile Include="Models\Proxy.cs" />
+    <Compile Include="Models\ProxyEntity.cs" />
     <Compile Include="Models\HttpServiceEntity.cs" />
     <Compile Include="ViewModels\Utils.cs" />
     <Compile Include="ViewModels\AppSettings.cs" />

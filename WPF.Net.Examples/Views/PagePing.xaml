@@ -11,40 +11,52 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="4*"></RowDefinition>
             <RowDefinition Height="6*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Button Name="buttonPingStart" Grid.Row="0" Grid.Column="0" Content="Ping start" 
-                Background="Transparent" Margin="2" Click="ButtonPingStart_OnClick"></Button>
-        <Button Name="buttonPingStop" Grid.Row="0" Grid.Column="1" Content="Ping stop" 
-                Background="Transparent" Margin="2" Click="ButtonPingStop_OnClick"></Button>
+        <Button Grid.Row="0" Grid.Column="0" Content="Ping start one time" Background="Transparent" Margin="2" 
+                Click="ButtonPingStartOne_OnClick"></Button>
+        <Button Grid.Row="0" Grid.Column="1" Content="Ping start repeat" Background="Transparent" Margin="2" 
+                Click="ButtonPingStartRepeat_OnClick"></Button>
+        <Button Name="buttonPingStop" Grid.Row="0" Grid.Column="2" Content="Ping stop" 
+                Background="Transparent" Click="ButtonPingStop_OnClick" Margin="2"></Button>
 
-        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2" >
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Content="Hosts list" HorizontalAlignment="Center" ></Label>
-            <Button Name="buttonHostsClear" Grid.Row="0" Grid.Column="1" Background="Transparent" Content="Hosts clear" Click="ButtonHostsClear_OnClick"></Button>
+            <TextBox Grid.Row="0" Text="Hosts list" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     Background="Transparent" Margin="2" IsReadOnly="True"></TextBox>
+            <Button Name="buttonHostsClear" Grid.Row="0" Grid.Column="1" Background="Transparent" 
+                    Content="Hosts clear" Click="ButtonHostsClear_OnClick" Margin="2"></Button>
             <TextBox Name="fieldIp" Grid.Row="1" Grid.Column="0" Background="Transparent" 
-                     Text="127.0.0.1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                     Text="127.0.0.1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     Margin="2"></TextBox>
             <Button Name="buttonHostAdd" Grid.Row="1" Grid.Column="1" Background="Transparent" 
-                    Content="Host add" Click="ButtonHostAdd_OnClick"></Button>
-            <ListBox Name="listBoxHosts" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" ></ListBox>
+                    Content="Host add" Click="ButtonHostAdd_OnClick" Margin="2"></Button>
+            <ListBox Name="listBoxHosts" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" ></ListBox>
+            <TextBox Grid.Row="2" Grid.Column="0" Text="Timeout" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     IsReadOnly="True" Background="Transparent" Margin="2"></TextBox>
+            <TextBox Grid.Row="2" Grid.Column="1" Background="Transparent" 
+                     Text="{Binding Path=Ping.Timeout, Mode=TwoWay, IsAsync=True}"
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"></TextBox>
         </Grid>
         
-        <TextBox Name="fieldOut" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="2"
+        <TextBox Name="fieldOut" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="2"
                  VerticalScrollBarVisibility="Visible" Background="Transparent" 
                  IsReadOnly="True" ></TextBox>
     </Grid>
