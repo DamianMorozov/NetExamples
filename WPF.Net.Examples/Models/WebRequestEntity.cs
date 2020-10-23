@@ -113,7 +113,7 @@ namespace WPF.Net.Examples.Models
 
         #endregion
 
-        #region Public methods
+        #region Public and private methods
 
         public void OpenTask(WebBrowser webBrowser, TextBox textBox)
         {
@@ -149,9 +149,9 @@ namespace WPF.Net.Examples.Models
                     var byteArray = System.Text.Encoding.UTF8.GetBytes(PostQuery);
                     webRequest.ContentType = @"application/x-www-form-urlencoded";
                     webRequest.ContentLength = byteArray.Length;
-                    using (var dataStream = webRequest.GetRequestStream())
+                    using (var dataStream = await webRequest.GetRequestStreamAsync())
                     {
-                        dataStream.Write(byteArray, 0, byteArray.Length);
+                        await dataStream.WriteAsync(byteArray, 0, byteArray.Length);
                         dataStream.Close();
                     }
                 }
@@ -163,7 +163,7 @@ namespace WPF.Net.Examples.Models
                 if (!string.IsNullOrEmpty(Login))
                     webRequest.Credentials = new NetworkCredential(Login, Password);
 
-                using (var webResponse = webRequest.GetResponse())
+                using (var webResponse = await webRequest.GetResponseAsync())
                 {
                     var headers = webResponse.Headers;
                     for (var i = 0; i < headers.Count; i++)

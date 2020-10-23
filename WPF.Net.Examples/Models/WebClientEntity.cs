@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -77,7 +78,7 @@ namespace WPF.Net.Examples.Models
 
         #endregion
 
-        #region Public methods
+        #region Public and private methods
 
         public void Download(TextBox fieldOut, bool isAsync, ProgressBar progressBar)
         {
@@ -95,6 +96,7 @@ namespace WPF.Net.Examples.Models
             });
         }
 
+        [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
         private async Task DownloadAsync(TextBox fieldOut, bool isAsync, ProgressBar progressBar)
         {
             await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(true);

@@ -67,9 +67,9 @@ namespace WPF.Net.Examples.Models
 
         #endregion
 
-        #region Public methods
+        #region Public and private methods
 
-        public void Get(string url, TextBox fieldOut, bool useProxy, Proxy proxy, bool isTimeout)
+        public void Get(string url, TextBox fieldOut, bool useProxy, ProxyEntity proxy, bool isTimeout)
         {
             if (!(_task is null))
             {
@@ -85,7 +85,7 @@ namespace WPF.Net.Examples.Models
             });
         }
 
-        public async Task GetAsync(string url, TextBox fieldOut, bool useProxy, Proxy proxy, bool isTimeout)
+        public async Task GetAsync(string url, TextBox fieldOut, bool useProxy, ProxyEntity proxy, bool isTimeout)
         {
             await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(true);
             InvokeTextBox.Clear(fieldOut);
@@ -118,7 +118,7 @@ namespace WPF.Net.Examples.Models
             sw.Stop();
         }
 
-        public HttpClient GetHttpClient(bool useProxy, Proxy proxy)
+        public HttpClient GetHttpClient(bool useProxy, ProxyEntity proxy)
         {
             if (!useProxy)
             {
