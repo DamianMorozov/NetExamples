@@ -3,7 +3,7 @@
 // ReSharper disable UnusedMember.Global
 namespace WPF.Net.Examples.Models
 {
-    public class Proxy
+    public class ProxyEntity
     {
         #region Public fields and properties
 
@@ -17,7 +17,7 @@ namespace WPF.Net.Examples.Models
 
         #region Constructor and destructor
 
-        public Proxy()
+        public ProxyEntity()
         {
             UseDefaultCreds = default;
             Host = @"http://somedomain.com:8080";
@@ -26,14 +26,14 @@ namespace WPF.Net.Examples.Models
             Password = default;
         }
 
-        public Proxy(bool useDefaultCreds, string host, string domain, string username, string password)
+        public ProxyEntity(bool useDefaultCreds, string host, string domain, string username, string password)
         {
             Setup(useDefaultCreds, host, domain, username, password);
         }
 
         #endregion
 
-        #region Public methods
+        #region Public and private methods
 
         public void Setup(bool useDefaultCreds, string host, string domain, string username, string password)
         {
