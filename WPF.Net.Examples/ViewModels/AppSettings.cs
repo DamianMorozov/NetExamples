@@ -8,7 +8,7 @@ using WPF.Net.Examples.Views;
 
 namespace WPF.Net.Examples.ViewModels
 {
-    public class AppSettings : INotifyPropertyChanged
+    internal class AppSettings : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
 
@@ -158,16 +158,16 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
-        private EnumWpfPage _activePage;
+        private Enums.WpfPage _activePage;
 
-        public EnumWpfPage ActivePage
+        public Enums.WpfPage ActivePage
         {
             get => _activePage;
             set
             {
                 switch (_activePage = value)
                 {
-                    case EnumWpfPage.WebClient:
+                    case Enums.WpfPage.WebClient:
                         if (PageWebClient == null)
                             PageWebClient = new PageWebClient();
                         if (Frame.Content != null)
@@ -178,7 +178,7 @@ namespace WPF.Net.Examples.ViewModels
                         else
                             Frame.Navigate(PageWebClient);
                         break;
-                    case EnumWpfPage.HttpService:
+                    case Enums.WpfPage.HttpService:
                         if (PageHttpService == null)
                             PageHttpService = new PageHttpService();
                         if (Frame.Content != null)
@@ -189,7 +189,7 @@ namespace WPF.Net.Examples.ViewModels
                         else
                             Frame.Navigate(PageHttpService);
                         break;
-                    case EnumWpfPage.Proxy:
+                    case Enums.WpfPage.Proxy:
                         if (_pageProxy == null)
                             _pageProxy = new PageProxy();
                         if (Frame.Content != null)
@@ -200,7 +200,7 @@ namespace WPF.Net.Examples.ViewModels
                         else
                             Frame.Navigate(_pageProxy);
                         break;
-                    case EnumWpfPage.Ping:
+                    case Enums.WpfPage.Ping:
                         if (PagePing == null)
                             PagePing = new PagePing();
                         if (Frame.Content != null)
@@ -211,7 +211,7 @@ namespace WPF.Net.Examples.ViewModels
                         else
                             Frame.Navigate(PagePing);
                         break;
-                    case EnumWpfPage.WebRequest:
+                    case Enums.WpfPage.WebRequest:
                         if (PageWebRequest == null)
                             PageWebRequest = new PageWebRequest();
                         if (Frame.Content != null)

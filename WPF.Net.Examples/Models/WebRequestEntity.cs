@@ -9,7 +9,7 @@ using WPF.Utils;
 
 namespace WPF.Net.Examples.Models
 {
-    public class WebRequestEntity
+    internal class WebRequestEntity
     {
         #region INotifyPropertyChanged
 

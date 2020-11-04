@@ -11,7 +11,7 @@ using WPF.Utils;
 
 namespace WPF.Net.Examples.Models
 {
-    public class HttpServiceEntity
+    internal class HttpServiceEntity
     {
         #region INotifyPropertyChanged
 

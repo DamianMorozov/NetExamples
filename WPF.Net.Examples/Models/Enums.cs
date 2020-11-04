@@ -1,11 +1,14 @@
 ﻿namespace WPF.Net.Examples.Models
 {
-    public enum EnumWpfPage
+    internal class Enums
     {
-        WebClient,
-        HttpService,
-        Proxy,
-        Ping,
-        WebRequest
+        public enum WpfPage
+        {
+            WebClient,
+            HttpService,
+            Proxy,
+            Ping,
+            WebRequest
+        }
     }
 }

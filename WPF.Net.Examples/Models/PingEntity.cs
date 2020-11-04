@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace WPF.Net.Examples.Models
 {
-    public class PingEntity
+    internal class PingEntity
     {
         #region INotifyPropertyChanged
 

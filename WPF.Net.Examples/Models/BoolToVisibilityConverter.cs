@@ -6,7 +6,7 @@ using System.Windows.Data;
 namespace WPF.Net.Examples.Models
 {
     [ValueConversion(typeof(bool), typeof(Visibility))]
-    public sealed class BoolToVisibilityConverter : IValueConverter
+    internal sealed class BoolToVisibilityConverter : IValueConverter
     {
         public Visibility TrueValue { get; set; }
         public Visibility FalseValue { get; set; }

@@ -3,7 +3,7 @@
 // ReSharper disable UnusedMember.Global
 namespace WPF.Net.Examples.Models
 {
-    public class ProxyEntity
+    internal class ProxyEntity
     {
         #region Public fields and properties
 

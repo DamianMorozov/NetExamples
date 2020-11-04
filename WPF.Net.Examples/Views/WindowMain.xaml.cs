@@ -31,28 +31,28 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonWebClient_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = EnumWpfPage.WebClient;
+            _appSet.ActivePage = Enums.WpfPage.WebClient;
         }
 
         private void ButtonHttpService_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = EnumWpfPage.HttpService;
+            _appSet.ActivePage = Enums.WpfPage.HttpService;
         }
 
         private void ButtonProxy_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = EnumWpfPage.Proxy;
+            _appSet.ActivePage = Enums.WpfPage.Proxy;
         }
         
 
         private void ButtonPing_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = EnumWpfPage.Ping;
+            _appSet.ActivePage = Enums.WpfPage.Ping;
         }
 
         private void ButtonWebRequest_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = EnumWpfPage.WebRequest;
+            _appSet.ActivePage = Enums.WpfPage.WebRequest;
         }
         
         #endregion

@@ -10,7 +10,7 @@ using WPF.Utils;
 
 namespace WPF.Net.Examples.Models
 {
-    public class WebClientEntity
+    internal class WebClientEntity
     {
         #region INotifyPropertyChanged
 
