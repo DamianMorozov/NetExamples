@@ -6,9 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.2.56] - 2020-11-04
+## [0.2.57] - 2020-11-04
 ### Added
 - Secure internal namespace for classes
+### Changed
+- Models.ProxyEntity
 
 ## [0.2.55] - 2020-10-23
 ### Added

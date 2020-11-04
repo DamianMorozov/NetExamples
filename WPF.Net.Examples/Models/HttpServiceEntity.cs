@@ -69,7 +69,7 @@ namespace WPF.Net.Examples.Models
 
         #region Public and private methods
 
-        public void Get(string url, TextBox fieldOut, bool useProxy, ProxyEntity proxy, bool isTimeout)
+        public void Get(string url, TextBox fieldOut, ProxyEntity proxy, bool isTimeout)
         {
             if (!(_task is null))
             {
@@ -81,20 +81,20 @@ namespace WPF.Net.Examples.Models
             }
             _task = Task.Run(async () =>
             {
-                await GetAsync(url, fieldOut, useProxy, proxy, isTimeout);
+                await GetAsync(url, fieldOut, proxy, isTimeout);
             });
         }
 
-        public async Task GetAsync(string url, TextBox fieldOut, bool useProxy, ProxyEntity proxy, bool isTimeout)
+        public async Task GetAsync(string url, TextBox fieldOut, ProxyEntity proxy, bool isTimeout)
         {
             await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(true);
             InvokeTextBox.Clear(fieldOut);
             var sw = Stopwatch.StartNew();
             try
             {
-                InvokeTextBox.AddTextFormat(fieldOut, sw, $"Get started. Use proxy = [{useProxy}]. Timeout = [{Timeout}].");
+                InvokeTextBox.AddTextFormat(fieldOut, sw, $"Get started. Use proxy = [{proxy.Use}]. Timeout = [{Timeout}].");
                 InvokeTextBox.AddTextFormat(fieldOut, sw, $"Url = [{url}]");
-                using (var httpClient = GetHttpClient(useProxy, proxy))
+                using (var httpClient = GetHttpClient(proxy))
                 {
                     if (isTimeout)
                         httpClient.Timeout = TimeSpan.FromMilliseconds(Timeout);
@@ -118,9 +118,9 @@ namespace WPF.Net.Examples.Models
             sw.Stop();
         }
 
-        public HttpClient GetHttpClient(bool useProxy, ProxyEntity proxy)
+        public HttpClient GetHttpClient(ProxyEntity proxy)
         {
-            if (!useProxy)
+            if (!proxy.Use)
             {
                 return new HttpClient(new HttpClientHandler { UseProxy = false });
             }
@@ -133,7 +133,7 @@ namespace WPF.Net.Examples.Models
                 Proxy = new WebProxy(proxy.Host),
             };
             var httpClient = new HttpClient(handler);
-            if (proxy.UseDefaultCreds)
+            if (proxy.UseDefaultCredentials)
             {
                 handler.UseDefaultCredentials = true;
             }

@@ -29,20 +29,24 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonHttpGetWithoutProxy_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, false, null, false);
+            _appSet.Proxy.Use = false;
+            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, _appSet.Proxy, false);
         }
         private void ButtonHttpGetWithProxy_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, true, _appSet.Proxy, false);
+            _appSet.Proxy.Use = true;
+            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, _appSet.Proxy, false);
         }
         private void ButtonHttpGetWithoutProxyTimeout_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, false, null, true);
+            _appSet.Proxy.Use = false;
+            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, _appSet.Proxy, true);
         }
 
         private void ButtonHttpGetWithProxyTimeout_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, false, null, true);
+            _appSet.Proxy.Use = false;
+            _appSet.HttpService.Get(_appSet.HttpService.Url, fieldOut, _appSet.Proxy, true);
         }
 
         #endregion
