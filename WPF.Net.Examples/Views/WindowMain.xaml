@@ -33,6 +33,8 @@
                 Content="Ping" Click="ButtonPing_OnClick"></Button>
         <Button Name="buttonWebRequest" Grid.Row="4" Grid.Column="0" Margin="5"
                 Content="WebRequest" Click="ButtonWebRequest_OnClick"></Button>
+        <Button Name="buttonChangelog" Grid.Row="5" Grid.Column="0" Margin="5"
+                Content="Changelog" Click="ButtonChangelog_OnClick"></Button>
 
         <Frame Grid.Row="0" Grid.Column="1" Grid.RowSpan="8"
                Content="{Binding Frame, Mode=OneWay, IsAsync=True}" NavigationUIVisibility="Hidden"></Frame>

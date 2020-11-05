@@ -56,5 +56,10 @@ namespace WPF.Net.Examples.Views
         }
         
         #endregion
+
+        private void ButtonChangelog_OnClick(object sender, RoutedEventArgs e)
+        {
+            _appSet.ActivePage = Enums.WpfPage.Changelog;
+        }
     }
 }

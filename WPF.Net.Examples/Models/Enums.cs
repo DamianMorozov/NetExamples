@@ -8,7 +8,8 @@
             HttpService,
             Proxy,
             Ping,
-            WebRequest
+            WebRequest,
+            Changelog,
         }
     }
 }

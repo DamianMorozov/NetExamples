@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.60] - 2020-11-05
+### Added
+- Views.PageChangelog
+### Changed
+- Models.Enums
+- ViewModels.AppSettings
+- Views.WindowMain
+
 ## [0.2.57] - 2020-11-04
 ### Added
 - Secure internal namespace for classes

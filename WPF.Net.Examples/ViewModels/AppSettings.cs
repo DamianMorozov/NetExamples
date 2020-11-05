@@ -158,6 +158,17 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
+        private PageChangelog _pageChangelog;
+        public PageChangelog PageChangelog
+        {
+            get => _pageChangelog;
+            set
+            {
+                _pageChangelog = value;
+                OnPropertyRaised();
+            }
+        }
+
         private Enums.WpfPage _activePage;
 
         public Enums.WpfPage ActivePage
@@ -221,6 +232,17 @@ namespace WPF.Net.Examples.ViewModels
                         }
                         else
                             Frame.Navigate(PageWebRequest);
+                        break;
+                    case Enums.WpfPage.Changelog:
+                        if (PageChangelog == null)
+                            PageChangelog = new PageChangelog();
+                        if (Frame.Content != null)
+                        {
+                            if (!(Frame.Content is PageChangelog))
+                                Frame.Navigate(PageChangelog);
+                        }
+                        else
+                            Frame.Navigate(PageChangelog);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

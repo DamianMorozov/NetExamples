@@ -69,6 +69,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\PageChangelog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\PageWebRequest.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,6 +106,9 @@
     </Compile>
     <Compile Include="Views\PageHttpService.xaml.cs">
       <DependentUpon>PageHttpService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PageChangelog.xaml.cs">
+      <DependentUpon>PageChangelog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PageWebRequest.xaml.cs">
       <DependentUpon>PageWebRequest.xaml</DependentUpon>
@@ -143,4 +150,9 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(SolutionDir)CHANGELOG.md" "$(TargetDir)" /Y
+xcopy "$(SolutionDir)LICENSE.md" "$(TargetDir)" /Y
+xcopy "$(SolutionDir)README.md" "$(TargetDir)" /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
