@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.61] - 2020-11-07
+### Changed
+- Moved ProxyEntity to nuget package Net.Utils (https://www.nuget.org/packages/Net.Utils/)
+
 ## [0.2.60] - 2020-11-05
 ### Added
 - Views.PageChangelog

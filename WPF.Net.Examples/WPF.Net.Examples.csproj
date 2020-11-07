@@ -38,6 +38,9 @@
     <StartupObject>WPF.Net.Examples.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Net.Utils, Version=0.1.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Net.Utils.0.1.10\lib\net48\Net.Utils.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
@@ -94,7 +97,6 @@
     <Compile Include="Models\PingEntity.cs" />
     <Compile Include="Models\WebRequestEntity.cs" />
     <Compile Include="Models\WebClientEntity.cs" />
-    <Compile Include="Models\ProxyEntity.cs" />
     <Compile Include="Models\HttpServiceEntity.cs" />
     <Compile Include="ViewModels\Utils.cs" />
     <Compile Include="ViewModels\AppSettings.cs" />
