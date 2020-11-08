@@ -30,19 +30,23 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonHostAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            var ip = Utils.InvokeTextBox.GetText(fieldIp);
-            Utils.InvokeTextBox.Clear(fieldIp);
-            Utils.InvokeListBox.ItemAdd(listBoxHosts, ip);
+            var host = Utils.InvokeTextBox.GetText(fieldIp);
+            if (!string.IsNullOrEmpty(host))
+            {
+                Utils.InvokeTextBox.Clear(fieldIp);
+                Utils.InvokeListBox.ItemAdd(listBoxHosts, host);
+            }
         }
 
         private void ButtonPingStartOne_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.Ping.OpenTask(false, listBoxHosts, fieldOut);
-        }
-
-        private void ButtonPingStartRepeat_OnClick(object sender, RoutedEventArgs e)
-        {
-            _appSet.Ping.OpenTask(true, listBoxHosts, fieldOut);
+            foreach (var host in listBoxHosts.Items)
+            {
+                _appSet.Ping.Hosts.Add(host.ToString(), false);
+            }
+            _appSet.Ping.OpenTask();
+            fieldIsTaskFinished.IsChecked = _appSet.HttpClient.IsTaskActive;
+            fieldOut.Text = _appSet.Ping.Status;
         }
 
         private void ButtonPingStop_OnClick(object sender, RoutedEventArgs e)

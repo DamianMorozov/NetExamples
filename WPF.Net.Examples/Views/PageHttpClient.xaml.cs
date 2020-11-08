@@ -30,7 +30,7 @@ namespace WPF.Net.Examples.Views
         private void ButtonHttpGet_OnClick(object sender, RoutedEventArgs e)
         {
             _appSet.HttpClient.OpenTask(_appSet.Proxy);
-            fieldIsTaskFinished.IsChecked = _appSet.HttpClient.IsTaskFinished;
+            fieldIsTaskFinished.IsChecked = _appSet.HttpClient.IsTaskActive;
             fieldStatus.Text = _appSet.HttpClient.Status;
             fieldContent.Text = _appSet.HttpClient.Content;
         }

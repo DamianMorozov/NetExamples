@@ -38,8 +38,8 @@
     <StartupObject>WPF.Net.Examples.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Net.Utils, Version=0.1.18.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Net.Utils.0.1.18\lib\net48\Net.Utils.dll</HintPath>
+    <Reference Include="Net.Utils, Version=0.1.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Net.Utils.0.1.21\lib\net48\Net.Utils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
@@ -94,7 +94,6 @@
     </Compile>
     <Compile Include="Models\BoolToVisibilityConverter.cs" />
     <Compile Include="Models\Enums.cs" />
-    <Compile Include="Models\PingEntity.cs" />
     <Compile Include="Models\WebRequestEntity.cs" />
     <Compile Include="Models\WebClientEntity.cs" />
     <Compile Include="ViewModels\Utils.cs" />

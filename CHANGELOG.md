@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.2.65] - 2020-11-08
+## [0.2.67] - 2020-11-08
 ### Changed
 - Views.PageChangelog
 - Views.PageHttpClient
@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Views.PageWebClient
 - Views.PageWebRequest
 - Views.WindowMain
+- Moved PingEntity to nuget package Net.Utils (https://www.nuget.org/packages/Net.Utils/)
 
 ## [0.2.62] - 2020-11-07
 ### Changed
