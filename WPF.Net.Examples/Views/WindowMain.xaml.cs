@@ -34,9 +34,9 @@ namespace WPF.Net.Examples.Views
             _appSet.ActivePage = Enums.WpfPage.WebClient;
         }
 
-        private void ButtonHttpService_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonHttpClient_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = Enums.WpfPage.HttpService;
+            _appSet.ActivePage = Enums.WpfPage.HttpClient;
         }
 
         private void ButtonProxy_OnClick(object sender, RoutedEventArgs e)

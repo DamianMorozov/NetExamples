@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using WPF.Net.Examples.ViewModels;
 // ReSharper disable NotAccessedField.Local
 
@@ -30,7 +27,7 @@ namespace WPF.Net.Examples.Views
         {
             _appSet = ViewModels.Utils.GetSettings(this);
         }
-        
+
         private void ButtonHostAdd_OnClick(object sender, RoutedEventArgs e)
         {
             var ip = Utils.InvokeTextBox.GetText(fieldIp);

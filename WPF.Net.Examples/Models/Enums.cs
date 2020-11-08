@@ -5,7 +5,7 @@
         public enum WpfPage
         {
             WebClient,
-            HttpService,
+            HttpClient,
             Proxy,
             Ping,
             WebRequest,

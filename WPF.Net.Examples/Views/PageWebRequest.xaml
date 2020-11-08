@@ -6,7 +6,6 @@
         mc:Ignorable="d"
         DataContext="{StaticResource AppSettings}"
         Title="WebClient"
-        Width="780" Height="600" 
         Loaded="PageWebRequest_Loaded">
 
     <Grid>

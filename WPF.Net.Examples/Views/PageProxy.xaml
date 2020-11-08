@@ -6,7 +6,6 @@
         mc:Ignorable="d"
         DataContext="{StaticResource AppSettings}"
         Title="Proxy"
-        Width="780" Height="600" 
         Loaded="PageProxy_Loaded">
 
     <Grid>

@@ -1,6 +1,7 @@
 ﻿using Net.Utils;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -24,13 +25,13 @@ namespace WPF.Net.Examples.ViewModels
 
         #region Public and private fields and properties
 
-        private HttpServiceEntity _httpService;
-        public HttpServiceEntity HttpService
+        private HttpClientEntity _httpClient;
+        public HttpClientEntity HttpClient
         {
-            get => _httpService;
+            get => _httpClient;
             set
             {
-                _httpService = value;
+                _httpClient = value;
                 OnPropertyRaised();
             }
         }
@@ -79,6 +80,17 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
+        private string _changeLog;
+        public string ChangeLog
+        {
+            get => _changeLog;
+            set
+            {
+                _changeLog = value;
+                OnPropertyRaised();
+            }
+        }
+
         #endregion
 
         #region Constructor and destructor
@@ -91,11 +103,20 @@ namespace WPF.Net.Examples.ViewModels
             {
                 NavigationUIVisibility = NavigationUIVisibility.Hidden
             };
-            HttpService = new HttpServiceEntity();
+            HttpClient = new HttpClientEntity { Host = new Uri("http://google.com/") };
             Proxy = new ProxyEntity();
             WebClient = new WebClientEntity();
             WebRequest = new WebRequestEntity();
             Ping = new PingEntity();
+            // ChangeLog
+            var fileName = "CHANGELOG.md";
+            if (File.Exists(fileName))
+            {
+                using (var sr = new StreamReader(fileName))
+                {
+                    ChangeLog = sr.ReadToEnd();
+                }
+            }
         }
 
         #endregion
@@ -124,8 +145,8 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
-        private PageHttpService _pageHttpService;
-        public PageHttpService PageHttpService
+        private PageHttpClient _pageHttpService;
+        public PageHttpClient PageHttpService
         {
             get => _pageHttpService;
             set
@@ -190,12 +211,12 @@ namespace WPF.Net.Examples.ViewModels
                         else
                             Frame.Navigate(PageWebClient);
                         break;
-                    case Enums.WpfPage.HttpService:
+                    case Enums.WpfPage.HttpClient:
                         if (PageHttpService == null)
-                            PageHttpService = new PageHttpService();
+                            PageHttpService = new PageHttpClient();
                         if (Frame.Content != null)
                         {
-                            if (!(Frame.Content is PageHttpService))
+                            if (!(Frame.Content is PageHttpClient))
                                 Frame.Navigate(PageHttpService);
                         }
                         else

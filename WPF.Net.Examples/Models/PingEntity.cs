@@ -66,11 +66,11 @@ namespace WPF.Net.Examples.Models
             }
             _task = Task.Run(async () =>
             {
-                await CreateTaskAsync(isRepeat, listBoxHosts, fieldOut);
+                await OpenTaskAsync(isRepeat, listBoxHosts, fieldOut);
             });
         }
 
-        private async Task CreateTaskAsync(bool isRepeat, ListBox listBoxHosts, TextBox fieldOut)
+        private async Task OpenTaskAsync(bool isRepeat, ListBox listBoxHosts, TextBox fieldOut)
         {
             await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(true);
             var ip = string.Empty;

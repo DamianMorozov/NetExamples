@@ -38,8 +38,8 @@
     <StartupObject>WPF.Net.Examples.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Net.Utils, Version=0.1.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Net.Utils.0.1.10\lib\net48\Net.Utils.dll</HintPath>
+    <Reference Include="Net.Utils, Version=0.1.18.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Net.Utils.0.1.18\lib\net48\Net.Utils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
@@ -68,7 +68,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PageHttpService.xaml">
+    <Page Include="Views\PageHttpClient.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -97,7 +97,6 @@
     <Compile Include="Models\PingEntity.cs" />
     <Compile Include="Models\WebRequestEntity.cs" />
     <Compile Include="Models\WebClientEntity.cs" />
-    <Compile Include="Models\HttpServiceEntity.cs" />
     <Compile Include="ViewModels\Utils.cs" />
     <Compile Include="ViewModels\AppSettings.cs" />
     <Compile Include="Views\PagePing.xaml.cs">
@@ -106,8 +105,8 @@
     <Compile Include="Views\PageProxy.xaml.cs">
       <DependentUpon>PageProxy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PageHttpService.xaml.cs">
-      <DependentUpon>PageHttpService.xaml</DependentUpon>
+    <Compile Include="Views\PageHttpClient.xaml.cs">
+      <DependentUpon>PageHttpClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PageChangelog.xaml.cs">
       <DependentUpon>PageChangelog.xaml</DependentUpon>

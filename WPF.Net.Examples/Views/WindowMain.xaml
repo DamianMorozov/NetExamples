@@ -5,28 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         DataContext="{StaticResource AppSettings}"
-        Title="WPF.Net.Examples" Width="900" Height="600" Loaded="WindowMain_Loaded">
+        Title="WPF.Net.Examples" Width="800" Height="600" Loaded="WindowMain_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="8.5*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Button Name="buttonWebClient" Grid.Row="0" Grid.Column="0" Margin="5"
                 Content="WebClient" Click="ButtonWebClient_OnClick"></Button>
         <Button Name="buttonHttpService" Grid.Row="1" Grid.Column="0" Margin="5"
-                Content="HttpService" Click="ButtonHttpService_OnClick"></Button>
+                Content="HttpClient" Click="ButtonHttpClient_OnClick"></Button>
         <Button Name="buttonProxy" Grid.Row="2" Grid.Column="0" Margin="5"
                 Content="Proxy" Click="ButtonProxy_OnClick"></Button>
         <Button Name="buttonPing" Grid.Row="3" Grid.Column="0" Margin="5"
@@ -37,6 +37,7 @@
                 Content="Changelog" Click="ButtonChangelog_OnClick"></Button>
 
         <Frame Grid.Row="0" Grid.Column="1" Grid.RowSpan="8"
-               Content="{Binding Frame, Mode=OneWay, IsAsync=True}" NavigationUIVisibility="Hidden"></Frame>
+               Content="{Binding Frame, Mode=OneWay, IsAsync=True}" 
+               NavigationUIVisibility="Hidden" Margin="5" ></Frame>
     </Grid>
 </Window>

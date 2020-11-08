@@ -6,27 +6,27 @@
         mc:Ignorable="d"
         DataContext="{StaticResource AppSettings}"
         Title="WebClient"
-        Width="780" Height="600" 
         Loaded="PageWebClient_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <TextBox Name="fieldUrl" Margin="5" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
                  Text="{Binding WebClient.Url, Mode=TwoWay}"
                  Background="Transparent" VerticalAlignment="Center"></TextBox>
-        <ProgressBar Name="progressBar" Margin="5" Grid.Row="0" Grid.Column="3" Minimum="0" Maximum="100" Background="Transparent" ></ProgressBar>
+        <ProgressBar Name="progressBar" Grid.Row="0" Grid.Column="3" Minimum="0" Maximum="100" 
+                     Background="Transparent" Height="16"></ProgressBar>
         <TextBox Name="fieldFileName" Margin="5" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" 
                  Text="{Binding WebClient.FileName, Mode=TwoWay}"
                  Background="Transparent" VerticalAlignment="Center"></TextBox>
