@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.75] - 2020-11-18
+### Changed
+- Views.PageHttpClient: fixed bugs
+- Views.PagePing: fixed bugs
+
 ## [0.2.67] - 2020-11-08
 ### Changed
 - Views.PageChangelog

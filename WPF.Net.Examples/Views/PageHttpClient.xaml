@@ -32,18 +32,16 @@
             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"
                 Text="Http get" TextWrapping="Wrap" Background="Transparent" ></TextBlock>
         </Button>
-        <CheckBox Margin="5" Grid.Column="1" Grid.Row="2" Content="Use task wait"
+        <CheckBox Name="fieldTaskWait" Margin="5" Grid.Column="1" Grid.Row="2" Content="Use task wait"
+                 VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" IsChecked="True"></CheckBox>
+        <CheckBox x:Name="fieldTaskStop" Margin="5" Grid.Column="2" Grid.Row="2" Content="Task is stoped" IsEnabled="False"
                  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" 
-                 IsChecked="{Binding Path=HttpClient.IsTaskWait, Mode=TwoWay, IsAsync=True}"></CheckBox>
-        <CheckBox Name="fieldIsTaskFinished" Margin="5" Grid.Column="2" Grid.Row="2" Content="Task is active" IsEnabled="False"
-                 VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" 
-                 IsChecked="{Binding Path=HttpClient.IsTaskActive, Mode=OneWay, IsAsync=True}"></CheckBox>
+                 IsChecked="{Binding Path=HttpClient.TaskStop, Mode=OneWay, IsAsync=False}"></CheckBox>
         <CheckBox Margin="5" Grid.Column="0" Grid.Row="1" Content="Use proxy"
                  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" 
                  IsChecked="{Binding Path=Proxy.Use, Mode=TwoWay, IsAsync=True}"></CheckBox>
-        <CheckBox Margin="5" Grid.Column="1" Grid.Row="1" Content="Use timeout"
-                 VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" 
-                 IsChecked="{Binding Path=HttpClient.IsTimeout, Mode=TwoWay, IsAsync=True}"></CheckBox>
+        <Label Margin="5" Grid.Column="1" Grid.Row="1" Content="Timeout"
+                 VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" ></Label>
         <TextBox Name="fieldTimeout" Margin="5" Grid.Column="2" Grid.Row="1" 
                  Text="{Binding HttpClient.Timeout, Mode=TwoWay, IsAsync=True}"
                  VerticalAlignment="Center" TextAlignment="Center" Background="Transparent" ></TextBox>

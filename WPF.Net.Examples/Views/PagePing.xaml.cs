@@ -1,5 +1,8 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using WPF.Net.Examples.ViewModels;
+using Key = System.Windows.Input.Key;
+
 // ReSharper disable NotAccessedField.Local
 
 namespace WPF.Net.Examples.Views
@@ -30,23 +33,24 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonHostAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            var host = Utils.InvokeTextBox.GetText(fieldIp);
+            var host = Utils.InvokeTextBox.GetText(fieldHost);
             if (!string.IsNullOrEmpty(host))
             {
-                Utils.InvokeTextBox.Clear(fieldIp);
-                Utils.InvokeListBox.ItemAdd(listBoxHosts, host);
+                Utils.InvokeTextBox.Clear(fieldHost);
+                if (!listBoxHosts.Items.Contains(host))
+                    Utils.InvokeListBox.ItemAdd(listBoxHosts, host);
             }
         }
 
-        private void ButtonPingStartOne_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonPingStart_OnClick(object sender, RoutedEventArgs e)
         {
+            _appSet.Ping.Hosts.Clear();
             foreach (var host in listBoxHosts.Items)
             {
-                _appSet.Ping.Hosts.Add(host.ToString(), false);
+                _appSet.Ping.Hosts.Add(host.ToString());
             }
-            _appSet.Ping.OpenTask();
-            fieldIsTaskFinished.IsChecked = _appSet.HttpClient.IsTaskActive;
-            fieldOut.Text = _appSet.Ping.Status;
+            _appSet.Ping.OpenTask(fieldTaskWait.IsChecked == true);
+            fieldTaskStop.IsChecked = _appSet.Ping.TaskStop;
         }
 
         private void ButtonPingStop_OnClick(object sender, RoutedEventArgs e)
@@ -57,6 +61,17 @@ namespace WPF.Net.Examples.Views
         private void ButtonHostsClear_OnClick(object sender, RoutedEventArgs e)
         {
             Utils.InvokeListBox.ItemsClear(listBoxHosts);
+        }
+        
+        private void FieldHost_OnKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.IsUp && e.Key == Key.Enter)
+                ButtonHostAdd_OnClick(sender, e);
+        }
+
+        private void ButtonGetStatus_OnClick(object sender, RoutedEventArgs e)
+        {
+            fieldOut.Text = _appSet.Ping.Status;
         }
 
         #endregion

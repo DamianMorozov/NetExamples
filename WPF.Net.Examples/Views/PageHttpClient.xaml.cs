@@ -29,8 +29,8 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonHttpGet_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.HttpClient.OpenTask(_appSet.Proxy);
-            fieldIsTaskFinished.IsChecked = _appSet.HttpClient.IsTaskActive;
+            _appSet.HttpClient.OpenTask(fieldTaskWait.IsChecked == true, _appSet.Proxy);
+            fieldTaskStop.IsChecked = _appSet.HttpClient.TaskStop;
             fieldStatus.Text = _appSet.HttpClient.Status;
             fieldContent.Text = _appSet.HttpClient.Content;
         }

@@ -38,8 +38,8 @@
     <StartupObject>WPF.Net.Examples.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Net.Utils, Version=0.1.21.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Net.Utils.0.1.21\lib\net48\Net.Utils.dll</HintPath>
+    <Reference Include="Net.Utils, Version=0.1.30.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Net.Utils.0.1.30\lib\net48\Net.Utils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />

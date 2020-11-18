@@ -25,60 +25,11 @@ namespace WPF.Net.Examples.ViewModels
 
         #region Public and private fields and properties
 
-        private HttpClientEntity _httpClient;
-        public HttpClientEntity HttpClient
-        {
-            get => _httpClient;
-            set
-            {
-                _httpClient = value;
-                OnPropertyRaised();
-            }
-        }
-
-        private ProxyEntity _proxy;
-        public ProxyEntity Proxy
-        {
-            get => _proxy;
-            set
-            {
-                _proxy = value;
-                OnPropertyRaised();
-            }
-        }
-
-        private WebClientEntity _webClient;
-        public WebClientEntity WebClient
-        {
-            get => _webClient;
-            set
-            {
-                _webClient = value;
-                OnPropertyRaised();
-            }
-        }
-
-        private WebRequestEntity _webRequest;
-        public WebRequestEntity WebRequest
-        {
-            get => _webRequest;
-            set
-            {
-                _webRequest = value;
-                OnPropertyRaised();
-            }
-        }
-
-        private PingEntity _ping;
-        public PingEntity Ping
-        {
-            get => _ping;
-            set
-            {
-                _ping = value;
-                OnPropertyRaised();
-            }
-        }
+        public HttpClientEntity HttpClient { get; set; }
+        public ProxyEntity Proxy { get; set; }
+        public WebClientEntity WebClient { get; set; }
+        public WebRequestEntity WebRequest { get; set; }
+        public PingEntity Ping { get; set; }
 
         private string _changeLog;
         public string ChangeLog
