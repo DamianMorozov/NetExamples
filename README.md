@@ -11,6 +11,7 @@
 ![](Assets/WPF.Net.Examples.Proxy.png?raw=true)
 ![](Assets/WPF.Net.Examples.Ping.png?raw=true)
 ![](Assets/WPF.Net.Examples.WebRequest.png?raw=true)
+![](Assets/WPF.Net.Examples.AppTheme.png?raw=true)
 
 ## Please, if this tool has been useful for you consider to donate
 [![Buy me a coffee](Assets/Buy_me_a_coffee.png?raw=true)](https://www.buymeacoffee.com/DamianVM)
