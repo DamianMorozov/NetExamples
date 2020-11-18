@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using ControlzEx.Theming;
 using WPF.Net.Examples.Models;
 using WPF.Net.Examples.Views;
 
@@ -42,6 +43,36 @@ namespace WPF.Net.Examples.ViewModels
             }
         }
 
+        private Enums.ThemePrimary _themePrimary;
+        public Enums.ThemePrimary  ThemePrimary
+        {
+            get => _themePrimary;
+            set
+            {
+                _themePrimary = value;
+                OnPropertyRaised();
+                if (!(WindowMain is null))
+                {
+                    ThemeManager.Current.ChangeTheme(WindowMain, $"{_themePrimary}.{_themeColor}");
+                }
+            }
+        }
+
+        private Enums.ThemeColor _themeColor;
+        public Enums.ThemeColor ThemeColor
+        {
+            get => _themeColor;
+            set
+            {
+                _themeColor = value;
+                if (!(WindowMain is null))
+                {
+                    ThemeManager.Current.ChangeTheme(WindowMain, $"{_themePrimary}.{_themeColor}");
+                }
+                OnPropertyRaised();
+            }
+        }
+
         #endregion
 
         #region Constructor and destructor
@@ -68,6 +99,8 @@ namespace WPF.Net.Examples.ViewModels
                     ChangeLog = sr.ReadToEnd();
                 }
             }
+            // MahApps theme.
+            DefaultTheme();
         }
 
         #endregion
@@ -138,6 +171,28 @@ namespace WPF.Net.Examples.ViewModels
             set
             {
                 _pageChangelog = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private PageAppTheme _pageAppTheme;
+        public PageAppTheme PageAppTheme
+        {
+            get => _pageAppTheme;
+            set
+            {
+                _pageAppTheme = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private System.Windows.Window _window;
+        public System.Windows.Window WindowMain
+        {
+            get => _window;
+            set
+            {
+                _window = value;
                 OnPropertyRaised();
             }
         }
@@ -217,6 +272,17 @@ namespace WPF.Net.Examples.ViewModels
                         else
                             Frame.Navigate(PageChangelog);
                         break;
+                    case Enums.WpfPage.AppTheme:
+                        if (PageAppTheme == null)
+                            PageAppTheme = new PageAppTheme();
+                        if (Frame.Content != null)
+                        {
+                            if (!(Frame.Content is PageAppTheme))
+                                Frame.Navigate(PageAppTheme);
+                        }
+                        else
+                            Frame.Navigate(PageAppTheme);
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -228,7 +294,11 @@ namespace WPF.Net.Examples.ViewModels
 
         #region Public and private methods
 
-        //
+        public void DefaultTheme()
+        {
+            ThemePrimary = Enums.ThemePrimary.Light;
+            ThemeColor = Enums.ThemeColor.Cobalt;
+        }
 
         #endregion
     }

@@ -2,7 +2,7 @@
 {
     internal class Enums
     {
-        public enum WpfPage
+        internal enum WpfPage
         {
             WebClient,
             HttpClient,
@@ -10,6 +10,40 @@
             Ping,
             WebRequest,
             Changelog,
+            AppTheme,
+        }
+
+        internal enum ThemePrimary
+        {
+            Light,
+            Dark,
+        }
+
+        internal enum ThemeColor
+        {
+            Red,
+            Green,
+            Blue,
+            Purple,
+            Orange,
+            Lime,
+            Emerald,
+            Teal,
+            Cyan,
+            Cobalt,
+            Indigo,
+            Violet,
+            Pink,
+            Magenta,
+            Crimson,
+            Amber,
+            Yellow,
+            Brown,
+            Olive,
+            Steel,
+            Mauve,
+            Taupe,
+            Sienna,
         }
     }
 }

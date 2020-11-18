@@ -1,11 +1,42 @@
-﻿<Window x:Class="WPF.Net.Examples.Views.WindowMain"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        DataContext="{StaticResource AppSettings}"
-        Title="WPF.Net.Examples" Width="800" Height="600" Loaded="WindowMain_Loaded">
+﻿<mah:MetroWindow x:Class="WPF.Net.Examples.Views.WindowMain"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 mc:Ignorable="d"
+                 DataContext="{StaticResource AppSettings}"
+                 Title="WPF.Net.Examples" Width="800" Height="600" Loaded="WindowMain_Loaded"
+                 ShowTitleBar="True" 
+                 ResizeMode="CanResizeWithGrip"
+                 WindowStartupLocation="CenterOwner"
+                 >
+
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button Click="LaunchGitHubSite" ToolTip="Open up the GitHub site">
+                <iconPacks:PackIconMaterialDesign Width="22" Height="22" Kind="Link" />
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button Click="LaunchNuGetSite" >
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterialDesign 
+                                Width="22" Height="22" VerticalAlignment="Center" Kind="Link" />
+                            <TextBlock Margin="4 0 0 0" VerticalAlignment="Center"
+                                       Text="NuGet package" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -35,9 +66,11 @@
                 Content="WebRequest" Click="ButtonWebRequest_OnClick"></Button>
         <Button Name="buttonChangelog" Grid.Row="5" Grid.Column="0" Margin="5"
                 Content="Changelog" Click="ButtonChangelog_OnClick"></Button>
+        <Button Name="buttonTheme" Grid.Row="6" Grid.Column="0" Margin="5"
+                Content="App theme" Click="buttonTheme_OnClick"></Button>
 
         <Frame Grid.Row="0" Grid.Column="1" Grid.RowSpan="8"
                Content="{Binding Frame, Mode=OneWay, IsAsync=True}" 
                NavigationUIVisibility="Hidden" Margin="5" ></Frame>
     </Grid>
-</Window>
+</mah:MetroWindow>

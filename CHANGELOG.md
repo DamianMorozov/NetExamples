@@ -6,7 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.2.75] - 2020-11-18
+## [0.2.80] - 2020-11-18
+### Added
+- MahApps.Metro NuGet package
+- MahApps.Metro.IconPacks.MaterialDesign NuGet package
 ### Changed
 - Views.PageHttpClient: fixed bugs
 - Views.PagePing: fixed bugs
