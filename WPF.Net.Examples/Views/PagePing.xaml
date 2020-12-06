@@ -21,13 +21,11 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <CheckBox Grid.Row="0" Grid.Column="0" Content="Is repeat" Background="Transparent" Margin="5" 
-                  IsChecked="{Binding Path=Ping.IsRepeat, Mode=TwoWay, IsAsync=True}"
+        <CheckBox Grid.Row="0" Grid.Column="0" Content="Use repeat" Background="Transparent" Margin="5" 
+                  IsChecked="{Binding Path=Ping.UseRepeat, Mode=TwoWay, IsAsync=True}"
                   HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
-        <CheckBox Name="fieldTaskWait" Grid.Row="0" Grid.Column="1" Content="Use task wait" Background="Transparent" Margin="5" 
-                  HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="True"></CheckBox>
         <CheckBox x:Name="fieldTaskStop" Grid.Row="0" Grid.Column="2" Content="Is task stoped" Background="Transparent" Margin="5" 
-                  IsChecked="{Binding Path=Ping.TaskStop, Mode=OneWay, IsAsync=True}"
+                  IsChecked="{Binding Path=Ping.IsStop, Mode=OneWay, IsAsync=True}"
                   HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"></CheckBox>
 
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" >
@@ -59,7 +57,7 @@
             <Label Grid.Row="3" Grid.Column="0" Content="Timeout task" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    Background="Transparent" Margin="2"></Label>
             <TextBox Grid.Row="3" Grid.Column="1" Background="Transparent" 
-                     Text="{Binding Path=Ping.TimeoutTask, Mode=TwoWay, IsAsync=True}"
+                     Text="{Binding Path=Ping.TimeoutRepeat, Mode=TwoWay, IsAsync=True}"
                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"></TextBox>
             <ListBox Name="listBoxHosts" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" ></ListBox>
         </Grid>
@@ -68,8 +66,6 @@
                 Click="ButtonPingStart_OnClick"></Button>
         <Button Grid.Row="2" Grid.Column="1" Content="Ping stop" 
                 Background="Transparent" Click="ButtonPingStop_OnClick" Margin="5"></Button>
-        <Button Grid.Row="2" Grid.Column="2" Content="Get status" 
-                Background="Transparent" Click="ButtonGetStatus_OnClick" Margin="5"></Button>
 
         <TextBox Name="fieldOut" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="2"
                  VerticalScrollBarVisibility="Visible" Background="Transparent" 

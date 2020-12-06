@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.10] - 2020-12-06
+### Changed
+- Updated NuGet packages
+
 ## [0.2.80] - 2020-11-18
 ### Added
 - MahApps.Metro NuGet package

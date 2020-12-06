@@ -1,7 +1,6 @@
 ﻿// ReSharper disable UnusedMember.Global
 
 using System.Windows;
-using System.Windows.Controls;
 using WPF.Net.Examples.Models;
 using WPF.Net.Examples.ViewModels;
 
@@ -69,7 +68,7 @@ namespace WPF.Net.Examples.Views
         private void ButtonThemeApply_OnClick(object sender, RoutedEventArgs e)
         {
             _appSet.ThemePrimary = (Enums.ThemePrimary)fieldThemePrimary.Items[fieldThemePrimary.SelectedIndex];
-            _appSet.ThemeColor= (Enums.ThemeColor)fieldThemeColor.Items[fieldThemeColor.SelectedIndex];
+            _appSet.ThemeColor = (Enums.ThemeColor)fieldThemeColor.Items[fieldThemeColor.SelectedIndex];
         }
 
         #endregion

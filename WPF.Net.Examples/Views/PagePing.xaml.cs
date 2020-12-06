@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using WPF.Net.Examples.ViewModels;
 using Key = System.Windows.Input.Key;
@@ -49,29 +50,27 @@ namespace WPF.Net.Examples.Views
             {
                 _appSet.Ping.Hosts.Add(host.ToString());
             }
-            _appSet.Ping.OpenTask(fieldTaskWait.IsChecked == true);
-            fieldTaskStop.IsChecked = _appSet.Ping.TaskStop;
+            _appSet.Ping.OpenAsync();
         }
 
         private void ButtonPingStop_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.Ping.Close();
+            var _ = Task.Run(async () =>
+            {
+                await _appSet.Ping.CloseAsync().ConfigureAwait(false);
+            });
         }
 
         private void ButtonHostsClear_OnClick(object sender, RoutedEventArgs e)
         {
             Utils.InvokeListBox.ItemsClear(listBoxHosts);
+            _appSet.Ping.Status = string.Empty;
         }
         
         private void FieldHost_OnKeyUp(object sender, KeyEventArgs e)
         {
             if (e.IsUp && e.Key == Key.Enter)
                 ButtonHostAdd_OnClick(sender, e);
-        }
-
-        private void ButtonGetStatus_OnClick(object sender, RoutedEventArgs e)
-        {
-            fieldOut.Text = _appSet.Ping.Status;
         }
 
         #endregion

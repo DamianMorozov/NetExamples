@@ -85,6 +85,8 @@ namespace WPF.Net.Examples.ViewModels
             {
                 NavigationUIVisibility = NavigationUIVisibility.Hidden
             };
+            // MahApps theme.
+            DefaultTheme();
             HttpClient = new HttpClientEntity { Host = new Uri("http://google.com/") };
             Proxy = new ProxyEntity();
             WebClient = new WebClientEntity();
@@ -99,8 +101,6 @@ namespace WPF.Net.Examples.ViewModels
                     ChangeLog = sr.ReadToEnd();
                 }
             }
-            // MahApps theme.
-            DefaultTheme();
         }
 
         #endregion
@@ -198,7 +198,6 @@ namespace WPF.Net.Examples.ViewModels
         }
 
         private Enums.WpfPage _activePage;
-
         public Enums.WpfPage ActivePage
         {
             get => _activePage;
