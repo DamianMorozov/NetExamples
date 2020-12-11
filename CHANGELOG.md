@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.11] - 2020-12-11
+### Changed
+- Updated NuGet package Net.Utils
+
 ## [0.3.10] - 2020-12-06
 ### Changed
 - Updated NuGet packages

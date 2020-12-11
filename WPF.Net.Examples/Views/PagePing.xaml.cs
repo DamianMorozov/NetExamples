@@ -64,7 +64,7 @@ namespace WPF.Net.Examples.Views
         private void ButtonHostsClear_OnClick(object sender, RoutedEventArgs e)
         {
             Utils.InvokeListBox.ItemsClear(listBoxHosts);
-            _appSet.Ping.Status = string.Empty;
+            _appSet.Ping.Log = string.Empty;
         }
         
         private void FieldHost_OnKeyUp(object sender, KeyEventArgs e)

@@ -55,8 +55,8 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
-    <Reference Include="Net.Utils, Version=0.1.34.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Net.Utils.0.1.34\lib\net48\Net.Utils.dll</HintPath>
+    <Reference Include="Net.Utils, Version=0.1.40.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Net.Utils.0.1.40\lib\net48\Net.Utils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

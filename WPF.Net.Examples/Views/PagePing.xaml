@@ -70,6 +70,6 @@
         <TextBox Name="fieldOut" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="2"
                  VerticalScrollBarVisibility="Visible" Background="Transparent" 
                  IsReadOnly="True" 
-                 Text="{Binding Path=Ping.Status, Mode=OneWay, IsAsync=True}"></TextBox>
+                 Text="{Binding Path=Ping.Log, Mode=OneWay, IsAsync=True}"></TextBox>
     </Grid>
 </Page>
