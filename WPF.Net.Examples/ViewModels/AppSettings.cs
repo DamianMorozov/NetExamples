@@ -96,10 +96,8 @@ namespace WPF.Net.Examples.ViewModels
             var fileName = "CHANGELOG.md";
             if (File.Exists(fileName))
             {
-                using (var sr = new StreamReader(fileName))
-                {
-                    ChangeLog = sr.ReadToEnd();
-                }
+                using var sr = new StreamReader(fileName);
+                ChangeLog = sr.ReadToEnd();
             }
         }
 
@@ -206,8 +204,7 @@ namespace WPF.Net.Examples.ViewModels
                 switch (_activePage = value)
                 {
                     case Enums.WpfPage.WebClient:
-                        if (PageWebClient == null)
-                            PageWebClient = new PageWebClient();
+                        PageWebClient ??= new PageWebClient();
                         if (Frame.Content != null)
                         {
                             if (!(Frame.Content is PageWebClient))
@@ -217,8 +214,7 @@ namespace WPF.Net.Examples.ViewModels
                             Frame.Navigate(PageWebClient);
                         break;
                     case Enums.WpfPage.HttpClient:
-                        if (PageHttpService == null)
-                            PageHttpService = new PageHttpClient();
+                        PageHttpService ??= new PageHttpClient();
                         if (Frame.Content != null)
                         {
                             if (!(Frame.Content is PageHttpClient))
@@ -228,8 +224,7 @@ namespace WPF.Net.Examples.ViewModels
                             Frame.Navigate(PageHttpService);
                         break;
                     case Enums.WpfPage.Proxy:
-                        if (_pageProxy == null)
-                            _pageProxy = new PageProxy();
+                        _pageProxy ??= new PageProxy();
                         if (Frame.Content != null)
                         {
                             if (!(Frame.Content is PageProxy))
@@ -239,8 +234,7 @@ namespace WPF.Net.Examples.ViewModels
                             Frame.Navigate(_pageProxy);
                         break;
                     case Enums.WpfPage.Ping:
-                        if (PagePing == null)
-                            PagePing = new PagePing();
+                        PagePing ??= new PagePing();
                         if (Frame.Content != null)
                         {
                             if (!(Frame.Content is PagePing))
@@ -250,8 +244,7 @@ namespace WPF.Net.Examples.ViewModels
                             Frame.Navigate(PagePing);
                         break;
                     case Enums.WpfPage.WebRequest:
-                        if (PageWebRequest == null)
-                            PageWebRequest = new PageWebRequest();
+                        PageWebRequest ??= new PageWebRequest();
                         if (Frame.Content != null)
                         {
                             if (!(Frame.Content is PageWebRequest))
@@ -261,8 +254,7 @@ namespace WPF.Net.Examples.ViewModels
                             Frame.Navigate(PageWebRequest);
                         break;
                     case Enums.WpfPage.Changelog:
-                        if (PageChangelog == null)
-                            PageChangelog = new PageChangelog();
+                        PageChangelog ??= new PageChangelog();
                         if (Frame.Content != null)
                         {
                             if (!(Frame.Content is PageChangelog))
@@ -272,8 +264,7 @@ namespace WPF.Net.Examples.ViewModels
                             Frame.Navigate(PageChangelog);
                         break;
                     case Enums.WpfPage.AppTheme:
-                        if (PageAppTheme == null)
-                            PageAppTheme = new PageAppTheme();
+                        PageAppTheme ??= new PageAppTheme();
                         if (Frame.Content != null)
                         {
                             if (!(Frame.Content is PageAppTheme))

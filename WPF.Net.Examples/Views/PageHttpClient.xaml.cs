@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading.Tasks;
+using System.Windows;
 using WPF.Net.Examples.ViewModels;
 
 namespace WPF.Net.Examples.Views
@@ -29,10 +30,11 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonHttpGet_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.HttpClient.OpenTask(fieldTaskWait.IsChecked == true, _appSet.Proxy);
-            fieldTaskStop.IsChecked = _appSet.HttpClient.TaskStop;
-            fieldStatus.Text = _appSet.HttpClient.Status;
-            fieldContent.Text = _appSet.HttpClient.Content;
+            var task = Task.Run(async () =>
+            {
+                await _appSet.HttpClient.OpenAsync(_appSet.Proxy).ConfigureAwait(false);
+            });
+            task.Wait();
         }
 
         #endregion

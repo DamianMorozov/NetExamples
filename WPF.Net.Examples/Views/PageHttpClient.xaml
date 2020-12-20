@@ -23,33 +23,33 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="URL" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
-        <TextBox Name="fieldUrl" Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
+        <TextBox Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
                  Text="{Binding HttpClient.Host, Mode=TwoWay, IsAsync=True}"
                  Background="Transparent" VerticalAlignment="Center"></TextBox>
 
-        <Button Name="buttonHttpGet" Margin="5" Grid.Row="2" Grid.Column="0" 
+        <Button Margin="5" Grid.Row="2" Grid.Column="0" 
                 Click="ButtonHttpGet_OnClick" Background="Transparent" >
             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"
                 Text="Http get" TextWrapping="Wrap" Background="Transparent" ></TextBlock>
         </Button>
-        <CheckBox Name="fieldTaskWait" Margin="5" Grid.Column="1" Grid.Row="2" Content="Use task wait"
+        <CheckBox Margin="5" Grid.Column="1" Grid.Row="2" Content="Use task wait"
                  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" IsChecked="True"></CheckBox>
-        <CheckBox x:Name="fieldTaskStop" Margin="5" Grid.Column="2" Grid.Row="2" Content="Task is stoped" IsEnabled="False"
+        <CheckBox Margin="5" Grid.Column="2" Grid.Row="2" Content="Task is stopped" IsEnabled="False"
                  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" 
-                 IsChecked="{Binding Path=HttpClient.TaskStop, Mode=OneWay, IsAsync=False}"></CheckBox>
+                 IsChecked="{Binding Path=HttpClient.IsStop, Mode=OneWay, IsAsync=False}"></CheckBox>
         <CheckBox Margin="5" Grid.Column="0" Grid.Row="1" Content="Use proxy"
                  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" 
                  IsChecked="{Binding Path=Proxy.Use, Mode=TwoWay, IsAsync=True}"></CheckBox>
         <Label Margin="5" Grid.Column="1" Grid.Row="1" Content="Timeout"
                  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" ></Label>
-        <TextBox Name="fieldTimeout" Margin="5" Grid.Column="2" Grid.Row="1" 
+        <TextBox Margin="5" Grid.Column="2" Grid.Row="1" 
                  Text="{Binding HttpClient.Timeout, Mode=TwoWay, IsAsync=True}"
                  VerticalAlignment="Center" TextAlignment="Center" Background="Transparent" ></TextBox>
 
-        <TextBox Name="fieldStatus" Margin="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" IsReadOnly="True" 
+        <TextBox Margin="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" IsReadOnly="True" 
                  Background="Transparent" VerticalScrollBarVisibility="Visible"
-                 Text="{Binding Path=HttpClient.Status, Mode=OneWay, IsAsync=True}"></TextBox>
-        <TextBox Name="fieldContent" Margin="5" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" IsReadOnly="True" 
+                 Text="{Binding Path=HttpClient.Log, Mode=OneWay, IsAsync=True}"></TextBox>
+        <TextBox Margin="5" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" IsReadOnly="True" 
                  Background="Transparent" VerticalScrollBarVisibility="Visible"
                  Text="{Binding Path=HttpClient.Content, Mode=OneWay, IsAsync=True}"></TextBox>
     </Grid>

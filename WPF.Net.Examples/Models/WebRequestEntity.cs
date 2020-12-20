@@ -149,11 +149,9 @@ namespace WPF.Net.Examples.Models
                     var byteArray = System.Text.Encoding.UTF8.GetBytes(PostQuery);
                     webRequest.ContentType = @"application/x-www-form-urlencoded";
                     webRequest.ContentLength = byteArray.Length;
-                    using (var dataStream = await webRequest.GetRequestStreamAsync())
-                    {
-                        await dataStream.WriteAsync(byteArray, 0, byteArray.Length);
-                        dataStream.Close();
-                    }
+                    using var dataStream = await webRequest.GetRequestStreamAsync();
+                    await dataStream.WriteAsync(byteArray, 0, byteArray.Length);
+                    dataStream.Close();
                 }
                 else
                 {
@@ -163,17 +161,15 @@ namespace WPF.Net.Examples.Models
                 if (!string.IsNullOrEmpty(Login))
                     webRequest.Credentials = new NetworkCredential(Login, Password);
 
-                using (var webResponse = await webRequest.GetResponseAsync())
+                using var webResponse = await webRequest.GetResponseAsync();
+                var headers = webResponse.Headers;
+                for (var i = 0; i < headers.Count; i++)
                 {
-                    var headers = webResponse.Headers;
-                    for (var i = 0; i < headers.Count; i++)
-                    {
-                        InvokeTextBox.AddTextFormat(textBox, sw, $@"{headers.GetKey(i)}: {headers[i]}");
-                    }
-                    InvokeTextBox.AddTextFormat(textBox, sw, @"StatusDescription = " + ((HttpWebResponse)webResponse).StatusDescription);
-                    InvokeWebBrowser.SetSource(webBrowser, webRequest.RequestUri);
-                    webResponse.Close();
+                    InvokeTextBox.AddTextFormat(textBox, sw, $@"{headers.GetKey(i)}: {headers[i]}");
                 }
+                InvokeTextBox.AddTextFormat(textBox, sw, @"StatusDescription = " + ((HttpWebResponse)webResponse).StatusDescription);
+                InvokeWebBrowser.SetSource(webBrowser, webRequest.RequestUri);
+                webResponse.Close();
             }
             catch (WebException ex)
             {

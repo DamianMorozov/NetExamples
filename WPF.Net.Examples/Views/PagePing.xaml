@@ -13,6 +13,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -24,7 +25,7 @@
         <CheckBox Grid.Row="0" Grid.Column="0" Content="Use repeat" Background="Transparent" Margin="5" 
                   IsChecked="{Binding Path=Ping.UseRepeat, Mode=TwoWay, IsAsync=True}"
                   HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
-        <CheckBox x:Name="fieldTaskStop" Grid.Row="0" Grid.Column="2" Content="Is task stoped" Background="Transparent" Margin="5" 
+        <CheckBox Grid.Row="0" Grid.Column="2" Content="Is task stopped" Background="Transparent" Margin="5" 
                   IsChecked="{Binding Path=Ping.IsStop, Mode=OneWay, IsAsync=True}"
                   HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"></CheckBox>
 
@@ -45,7 +46,7 @@
             <Button Name="buttonHostsClear" Grid.Row="0" Grid.Column="1" Background="Transparent" 
                     Content="Hosts clear" Click="ButtonHostsClear_OnClick" Margin="2"></Button>
             <TextBox Name="fieldHost" Grid.Row="1" Grid.Column="0" Background="Transparent" 
-                     Text="localhost" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     Text="google.com" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                      Margin="2" KeyUp="FieldHost_OnKeyUp"></TextBox>
             <Button Name="buttonHostAdd" Grid.Row="1" Grid.Column="1" Background="Transparent" 
                     Content="Host add" Click="ButtonHostAdd_OnClick" Margin="2"></Button>
@@ -54,7 +55,7 @@
             <TextBox Grid.Row="2" Grid.Column="1" Background="Transparent" 
                      Text="{Binding Path=Ping.TimeoutPing, Mode=TwoWay, IsAsync=True}"
                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"></TextBox>
-            <Label Grid.Row="3" Grid.Column="0" Content="Timeout task" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <Label Grid.Row="3" Grid.Column="0" Content="Timeout repeat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    Background="Transparent" Margin="2"></Label>
             <TextBox Grid.Row="3" Grid.Column="1" Background="Transparent" 
                      Text="{Binding Path=Ping.TimeoutRepeat, Mode=TwoWay, IsAsync=True}"
@@ -67,7 +68,11 @@
         <Button Grid.Row="2" Grid.Column="1" Content="Ping stop" 
                 Background="Transparent" Click="ButtonPingStop_OnClick" Margin="5"></Button>
 
-        <TextBox Name="fieldOut" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="2"
+        <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="2"
+                 VerticalScrollBarVisibility="Visible" Background="Transparent" 
+                 IsReadOnly="True" 
+                 Text="{Binding Path=Ping.Settings, Mode=OneWay, IsAsync=True}"></TextBox>
+        <TextBox Name="fieldOut" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="2"
                  VerticalScrollBarVisibility="Visible" Background="Transparent" 
                  IsReadOnly="True" 
                  Text="{Binding Path=Ping.Log, Mode=OneWay, IsAsync=True}"></TextBox>

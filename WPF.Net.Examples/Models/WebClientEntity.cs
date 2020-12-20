@@ -165,37 +165,29 @@ namespace WPF.Net.Examples.Models
                 {
                     long bytesCursor = 0;
                     InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Start downloading the file ""{Url}"".");
-                    using (var webClient = new System.Net.WebClient())
+                    using var webClient = new System.Net.WebClient();
+                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{FileName}"".");
+                    //webClient.DownloadFile(new Uri(Url), FileName);
+                    using var webRead = webClient.OpenRead(Url);
+                    using var binaryReader = new BinaryReader(webRead ?? throw new InvalidOperationException());
+                    var bytesTotal = Convert.ToInt64(webClient.ResponseHeaders["Content-Length"]);
+                    InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File size {bytesTotal:### ### ###} bytes.");
+                    if (bytesTotal > 0)
                     {
-                        InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File to save ""{FileName}"".");
-                        //webClient.DownloadFile(new Uri(Url), FileName);
-                        using (var webRead = webClient.OpenRead(Url))
+                        using var binaryWriter = new BinaryWriter(File.Open(FileName, FileMode.Create));
+                        while (bytesCursor < bytesTotal)
                         {
-                            using (var binaryReader = new BinaryReader(webRead ?? throw new InvalidOperationException()))
-                            {
-                                var bytesTotal = Convert.ToInt64(webClient.ResponseHeaders["Content-Length"]);
-                                InvokeTextBox.AddTextFormat(fieldOut, sw, $@"File size {bytesTotal:### ### ###} bytes.");
-                                if (bytesTotal > 0)
-                                {
-                                    using (var binaryWriter = new BinaryWriter(File.Open(FileName, FileMode.Create)))
-                                    {
-                                        while (bytesCursor < bytesTotal)
-                                        {
-                                            binaryWriter.Write(binaryReader.ReadBytes(BufferSize));
-                                            bytesCursor += BufferSize;
-                                            var setValue = (int)(bytesCursor * 100 / bytesTotal);
-                                            if (setValue > 100) setValue = 100;
-                                            InvokeProgressBar.SetValue(progressBar, setValue);
-                                        }
-                                        InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{Url}"".");
-                                    }
-                                }
-                                else
-                                {
-                                    InvokeTextBox.AddTextFormat(fieldOut, sw, @"Download can not be started!");
-                                }
-                            }
+                            binaryWriter.Write(binaryReader.ReadBytes(BufferSize));
+                            bytesCursor += BufferSize;
+                            var setValue = (int)(bytesCursor * 100 / bytesTotal);
+                            if (setValue > 100) setValue = 100;
+                            InvokeProgressBar.SetValue(progressBar, setValue);
                         }
+                        InvokeTextBox.AddTextFormat(fieldOut, sw, $@"Finish downloading the file ""{Url}"".");
+                    }
+                    else
+                    {
+                        InvokeTextBox.AddTextFormat(fieldOut, sw, @"Download can not be started!");
                     }
                 }
                 else

@@ -54,20 +54,20 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Button Name="buttonTheme" Grid.Row="0" Grid.Column="0" Margin="5"
+        <Button Grid.Row="0" Grid.Column="0" Margin="5"
                 Content=" App theme " Click="buttonTheme_OnClick"></Button>
-        <Button Name="buttonChangelog" Grid.Row="1" Grid.Column="0" Margin="5"
+        <Button Grid.Row="1" Grid.Column="0" Margin="5"
                 Content=" Changelog " Click="ButtonChangelog_OnClick"></Button>
 
-        <Button Name="buttonWebClient" Grid.Row="2" Grid.Column="0" Margin="5"
+        <Button Grid.Row="2" Grid.Column="0" Margin="5"
                 Content=" WebClient " Click="ButtonWebClient_OnClick"></Button>
-        <Button Name="buttonHttpService" Grid.Row="3" Grid.Column="0" Margin="5"
+        <Button Grid.Row="3" Grid.Column="0" Margin="5"
                 Content=" HttpClient " Click="ButtonHttpClient_OnClick"></Button>
-        <Button Name="buttonProxy" Grid.Row="4" Grid.Column="0" Margin="5"
+        <Button Grid.Row="4" Grid.Column="0" Margin="5"
                 Content=" Proxy " Click="ButtonProxy_OnClick"></Button>
-        <Button Name="buttonPing" Grid.Row="5" Grid.Column="0" Margin="5"
+        <Button Grid.Row="5" Grid.Column="0" Margin="5"
                 Content=" Ping " Click="ButtonPing_OnClick"></Button>
-        <Button Name="buttonWebRequest" Grid.Row="6" Grid.Column="0" Margin="5"
+        <Button Grid.Row="6" Grid.Column="0" Margin="5"
                 Content=" WebRequest " Click="ButtonWebRequest_OnClick"></Button>
 
         <Frame Grid.Row="0" Grid.Column="1" Grid.RowSpan="8"

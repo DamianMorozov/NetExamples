@@ -1,4 +1,6 @@
-﻿namespace WPF.Net.Examples.Models
+﻿// ReSharper disable UnusedMember.Global
+
+namespace WPF.Net.Examples.Models
 {
     internal class Enums
     {
