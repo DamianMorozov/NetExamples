@@ -1,6 +1,7 @@
 ﻿using Net.Utils;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
@@ -31,6 +32,102 @@ namespace WPF.Net.Examples.ViewModels
         public WebClientEntity WebClient { get; set; }
         public WebRequestEntity WebRequest { get; set; }
         public PingEntity Ping { get; set; }
+
+        private string _browseSharpUrl;
+
+        public string BrowseSharpUrl
+        {
+            get => _browseSharpUrl;
+            set
+            {
+                _browseSharpUrl = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private string _browseSharpResult;
+
+        public string BrowseSharpResult
+        {
+            get => _browseSharpResult;
+            set
+            {
+                _browseSharpResult = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private string _browseSharpLog;
+
+        public string BrowseSharpLog
+        {
+            get => _browseSharpLog;
+            set
+            {
+                _browseSharpLog = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private Stopwatch _browseSharpStopwatch;
+
+        public Stopwatch BrowseSharpStopwatch
+        {
+            get => _browseSharpStopwatch;
+            set
+            {
+                _browseSharpStopwatch = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private string _webParseUrl;
+
+        public string WebParseUrl
+        {
+            get => _webParseUrl;
+            set
+            {
+                _webParseUrl = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private string _webParseResult;
+
+        public string WebParseResult
+        {
+            get => _webParseResult;
+            set
+            {
+                _webParseResult = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private string _webParseLog;
+
+        public string WebParseLog
+        {
+            get => _webParseLog;
+            set
+            {
+                _webParseLog = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private Stopwatch _webParseStopwatch;
+
+        public Stopwatch WebParseStopwatch
+        {
+            get => _webParseStopwatch;
+            set
+            {
+                _webParseStopwatch = value;
+                OnPropertyRaised();
+            }
+        }
 
         private string _changeLog;
         public string ChangeLog
@@ -99,6 +196,10 @@ namespace WPF.Net.Examples.ViewModels
                 using var sr = new StreamReader(fileName);
                 ChangeLog = sr.ReadToEnd();
             }
+
+            BrowseSharpUrl = "https://www.browsesharp.org/testsitesforms.html";
+            WebParseUrl = "https://www.readfootball.com/tables.html";
+            WebParseResult = string.Empty;
         }
 
         #endregion
@@ -180,6 +281,28 @@ namespace WPF.Net.Examples.ViewModels
             set
             {
                 _pageAppTheme = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private PageBrowseSharp _pageBrowseSharp;
+        public PageBrowseSharp PageBrowseSharp
+        {
+            get => _pageBrowseSharp;
+            set
+            {
+                _pageBrowseSharp = value;
+                OnPropertyRaised();
+            }
+        }
+
+        private PageWebParse _pageWebParse;
+        public PageWebParse PageWebParse
+        {
+            get => _pageWebParse;
+            set
+            {
+                _pageWebParse = value;
                 OnPropertyRaised();
             }
         }
@@ -272,6 +395,26 @@ namespace WPF.Net.Examples.ViewModels
                         }
                         else
                             Frame.Navigate(PageAppTheme);
+                        break;
+                    case Enums.WpfPage.WebParse:
+                        PageWebParse ??= new PageWebParse();
+                        if (Frame.Content != null)
+                        {
+                            if (!(Frame.Content is PageWebParse))
+                                Frame.Navigate(PageWebParse);
+                        }
+                        else
+                            Frame.Navigate(PageWebParse);
+                        break;
+                    case Enums.WpfPage.BrowseSharp:
+                        PageBrowseSharp ??= new PageBrowseSharp();
+                        if (Frame.Content != null)
+                        {
+                            if (!(Frame.Content is PageAppTheme))
+                                Frame.Navigate(PageBrowseSharp);
+                        }
+                        else
+                            Frame.Navigate(PageBrowseSharp);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

@@ -13,6 +13,8 @@ namespace WPF.Net.Examples.Models
             WebRequest,
             Changelog,
             AppTheme,
+            WebParse,
+            BrowseSharp,
         }
 
         internal enum ThemePrimary

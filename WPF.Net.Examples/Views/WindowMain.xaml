@@ -47,6 +47,8 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -69,8 +71,12 @@
                 Content=" Ping " Click="ButtonPing_OnClick"></Button>
         <Button Grid.Row="6" Grid.Column="0" Margin="5"
                 Content=" WebRequest " Click="ButtonWebRequest_OnClick"></Button>
+        <Button Grid.Row="7" Grid.Column="0" Margin="5"
+                Content=" WebParse" Click="ButtonWebParse_OnClick"></Button>
+        <Button Grid.Row="8" Grid.Column="0" Margin="5"
+                Content=" BrowseSharp" Click="ButtonBrowseSharp_OnClick"></Button>
 
-        <Frame Grid.Row="0" Grid.Column="1" Grid.RowSpan="8"
+        <Frame Grid.Row="0" Grid.Column="1" Grid.RowSpan="10"
                Content="{Binding Frame, Mode=OneWay, IsAsync=True}" 
                NavigationUIVisibility="Hidden" Margin="5" ></Frame>
     </Grid>

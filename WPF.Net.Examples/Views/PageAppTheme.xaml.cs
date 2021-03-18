@@ -10,7 +10,7 @@ namespace WPF.Net.Examples.Views
     {
         #region Private fields and properties
 
-        private AppSettings _appSet;
+        private AppSettings AppSettings { get; set; }
 
         #endregion
 
@@ -27,7 +27,7 @@ namespace WPF.Net.Examples.Views
 
         private void PageAppTheme_OnLoaded(object sender, RoutedEventArgs e)
         {
-            _appSet = ViewModels.Utils.GetSettings(this);
+            AppSettings = ViewModels.Utils.GetSettings(this);
 
             GetThemeGui();
         }
@@ -40,7 +40,7 @@ namespace WPF.Net.Examples.Views
             foreach (var themePrimary in System.Enum.GetValues(typeof(Enums.ThemePrimary)))
             {
                 fieldThemePrimary.Items.Add(themePrimary);
-                if (themePrimary.Equals(_appSet.ThemePrimary))
+                if (themePrimary.Equals(AppSettings.ThemePrimary))
                     s = i;
                 i++;
             }
@@ -52,7 +52,7 @@ namespace WPF.Net.Examples.Views
             foreach (var themeColor in System.Enum.GetValues(typeof(Enums.ThemeColor)))
             {
                 fieldThemeColor.Items.Add(themeColor);
-                if (themeColor.Equals(_appSet.ThemeColor))
+                if (themeColor.Equals(AppSettings.ThemeColor))
                     s = i;
                 i++;
             }
@@ -61,14 +61,14 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonThemeDefault_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.DefaultTheme();
+            AppSettings.DefaultTheme();
             GetThemeGui();
         }
 
         private void ButtonThemeApply_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ThemePrimary = (Enums.ThemePrimary)fieldThemePrimary.Items[fieldThemePrimary.SelectedIndex];
-            _appSet.ThemeColor = (Enums.ThemeColor)fieldThemeColor.Items[fieldThemeColor.SelectedIndex];
+            AppSettings.ThemePrimary = (Enums.ThemePrimary)fieldThemePrimary.Items[fieldThemePrimary.SelectedIndex];
+            AppSettings.ThemeColor = (Enums.ThemeColor)fieldThemeColor.Items[fieldThemeColor.SelectedIndex];
         }
 
         #endregion

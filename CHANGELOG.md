@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.30] - 2021-03-18
+### Added
+- Added WebParse usage example
+- Added BrowseSharp usage example
+
 ## [0.3.12] - 2020-12-20
 ### Changed
 - Updated NuGet package Net.Utils 0.1.44

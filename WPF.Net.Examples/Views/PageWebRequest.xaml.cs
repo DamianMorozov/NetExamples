@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using WPF.Net.Examples.ViewModels;
-
 // ReSharper disable UnusedMember.Global
 
 namespace WPF.Net.Examples.Views
@@ -9,7 +8,7 @@ namespace WPF.Net.Examples.Views
     {
         #region Private fields and properties
 
-        private AppSettings _appSet;
+        private AppSettings AppSettings { get; set; }
 
         #endregion
 
@@ -26,12 +25,12 @@ namespace WPF.Net.Examples.Views
 
         private void PageWebRequest_Loaded(object sender, RoutedEventArgs e)
         {
-            _appSet = ViewModels.Utils.GetSettings(this);
+            AppSettings = ViewModels.Utils.GetSettings(this);
         }
 
         private void ButtonWebRequest_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.WebRequest.OpenTask(webBrowser, fieldOut);
+            AppSettings.WebRequest.OpenTask(webBrowser, fieldOut);
         }
 
         #endregion

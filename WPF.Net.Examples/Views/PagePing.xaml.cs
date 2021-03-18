@@ -12,7 +12,7 @@ namespace WPF.Net.Examples.Views
     {
         #region Private fields and properties
 
-        private AppSettings _appSet;
+        private AppSettings AppSettings { get; set; }
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace WPF.Net.Examples.Views
 
         private void PageProxy_Loaded(object sender, RoutedEventArgs e)
         {
-            _appSet = ViewModels.Utils.GetSettings(this);
+            AppSettings = ViewModels.Utils.GetSettings(this);
         }
 
         private void ButtonHostAdd_OnClick(object sender, RoutedEventArgs e)
@@ -45,26 +45,26 @@ namespace WPF.Net.Examples.Views
 
         private void ButtonPingStart_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.Ping.Hosts.Clear();
+            AppSettings.Ping.Hosts.Clear();
             foreach (var host in listBoxHosts.Items)
             {
-                _appSet.Ping.Hosts.Add(host.ToString());
+                AppSettings.Ping.Hosts.Add(host.ToString());
             }
-            _appSet.Ping.OpenAsync();
+            AppSettings.Ping.OpenAsync();
         }
 
         private void ButtonPingStop_OnClick(object sender, RoutedEventArgs e)
         {
             var _ = Task.Run(async () =>
             {
-                await _appSet.Ping.CloseAsync().ConfigureAwait(false);
+                await AppSettings.Ping.CloseAsync().ConfigureAwait(false);
             });
         }
 
         private void ButtonHostsClear_OnClick(object sender, RoutedEventArgs e)
         {
             Utils.InvokeListBox.ItemsClear(listBoxHosts);
-            _appSet.Ping.Log = string.Empty;
+            AppSettings.Ping.Log = string.Empty;
         }
         
         private void FieldHost_OnKeyUp(object sender, KeyEventArgs e)

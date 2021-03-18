@@ -9,7 +9,7 @@ namespace WPF.Net.Examples.Views
     {
         #region Private fields and properties
 
-        private AppSettings _appSet;
+        private AppSettings AppSettings { get; set; }
 
         #endregion
 
@@ -26,22 +26,22 @@ namespace WPF.Net.Examples.Views
 
         private void PageWebClient_Loaded(object sender, RoutedEventArgs e)
         {
-            _appSet = ViewModels.Utils.GetSettings(this);
+            AppSettings = ViewModels.Utils.GetSettings(this);
         }
 
         private void ButtonFileDownload_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.WebClient.Download(fieldOut, false, progressBar);
+            AppSettings.WebClient.Download(fieldOut, false, progressBar);
         }
 
         private void ButtonFileDownloadAsync_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.WebClient.Download(fieldOut, true, progressBar);
+            AppSettings.WebClient.Download(fieldOut, true, progressBar);
         }
 
         private void ButtonFileDownloadWithProgress_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.WebClient.DownloadWithBuffer(fieldOut, progressBar);
+            AppSettings.WebClient.DownloadWithBuffer(fieldOut, progressBar);
         }
 
         #endregion

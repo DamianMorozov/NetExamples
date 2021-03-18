@@ -12,7 +12,7 @@ namespace WPF.Net.Examples.Views
     {
         #region Private fields and properties
 
-        private AppSettings _appSet;
+        private AppSettings AppSettings { get; set; }
 
         #endregion
 
@@ -47,46 +47,56 @@ namespace WPF.Net.Examples.Views
 
         private void WindowMain_Loaded(object sender, RoutedEventArgs e)
         {
-            _appSet = ViewModels.Utils.GetSettings(this);
-            _appSet.WindowMain = this;
-            _appSet.DefaultTheme();
+            AppSettings = ViewModels.Utils.GetSettings(this);
+            AppSettings.WindowMain = this;
+            AppSettings.DefaultTheme();
         }
 
         private void ButtonWebClient_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = Enums.WpfPage.WebClient;
+            AppSettings.ActivePage = Enums.WpfPage.WebClient;
         }
 
         private void ButtonHttpClient_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = Enums.WpfPage.HttpClient;
+            AppSettings.ActivePage = Enums.WpfPage.HttpClient;
         }
 
         private void ButtonProxy_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = Enums.WpfPage.Proxy;
+            AppSettings.ActivePage = Enums.WpfPage.Proxy;
         }
 
         private void ButtonPing_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = Enums.WpfPage.Ping;
+            AppSettings.ActivePage = Enums.WpfPage.Ping;
         }
 
         private void ButtonWebRequest_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = Enums.WpfPage.WebRequest;
+            AppSettings.ActivePage = Enums.WpfPage.WebRequest;
         }
 
         private void ButtonChangelog_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = Enums.WpfPage.Changelog;
+            AppSettings.ActivePage = Enums.WpfPage.Changelog;
         }
 
         private void buttonTheme_OnClick(object sender, RoutedEventArgs e)
         {
-            _appSet.ActivePage = Enums.WpfPage.AppTheme;
+            AppSettings.ActivePage = Enums.WpfPage.AppTheme;
         }
 
+        private void ButtonBrowseSharp_OnClick(object sender, RoutedEventArgs e)
+        {
+            AppSettings.ActivePage = Enums.WpfPage.BrowseSharp;
+        }
+        
         #endregion
+
+        private void ButtonWebParse_OnClick(object sender, RoutedEventArgs e)
+        {
+            AppSettings.ActivePage = Enums.WpfPage.WebParse;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace WPF.Net.Examples.Views
     {
         #region Private fields and properties
 
-        private AppSettings _appSet;
+        private AppSettings AppSettings { get; set; }
 
         #endregion
 
@@ -25,7 +25,7 @@ namespace WPF.Net.Examples.Views
 
         private void PageProxy_Loaded(object sender, RoutedEventArgs e)
         {
-            _appSet = ViewModels.Utils.GetSettings(this);
+            AppSettings = ViewModels.Utils.GetSettings(this);
         }
 
         #endregion
