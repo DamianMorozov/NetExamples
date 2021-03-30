@@ -12,8 +12,8 @@
 ![](Assets/WPF.Net.Examples.Proxy.png?raw=true)
 ![](Assets/WPF.Net.Examples.Ping.png?raw=true)
 ![](Assets/WPF.Net.Examples.WebRequest.png?raw=true)
-![](Assets/WPF.Net.Examples.BrowseSharp?raw=true)
-![](Assets/WPF.Net.Examples.WebParse?raw=true)
+![](Assets/WPF.Net.Examples.BrowseSharp.png?raw=true)
+![](Assets/WPF.Net.Examples.WebParse.png?raw=true)
 
 ## WPF.Net.Examples
 
