@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.40] - 2021-03-30
+### Added
+- Added TcpClientApp project witch TcpClient usage examples
+
 ## [0.3.30] - 2021-03-18
 ### Added
 - Added WebParse usage example
