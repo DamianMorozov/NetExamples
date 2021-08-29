@@ -1,22 +1,22 @@
-# Net.Examples
+# NetExamples
 
-![Latest Version](https://img.shields.io/github/release/DamianMorozov/Net.Examples.svg)
-![Downloads](https://img.shields.io/github/downloads/DamianMorozov/Net.Examples/total.svg)
+![Latest Version](https://img.shields.io/github/release/DamianMorozov/NetExamples.svg)
+![Downloads](https://img.shields.io/github/downloads/DamianMorozov/NetExamples/total.svg)
 
-## WPF.Net.Examples
+## WpfNet
 
-![](Assets/WPF.Net.Examples.AppTheme.png?raw=true)
-![](Assets/WPF.Net.Examples.png?raw=true)
-![](Assets/WPF.Net.Examples.WebClient.png?raw=true)
-![](Assets/WPF.Net.Examples.HttpClient.png?raw=true)
-![](Assets/WPF.Net.Examples.Proxy.png?raw=true)
-![](Assets/WPF.Net.Examples.Ping.png?raw=true)
-![](Assets/WPF.Net.Examples.WebRequest.png?raw=true)
-![](Assets/WPF.Net.Examples.BrowseSharp.png?raw=true)
-![](Assets/WPF.Net.Examples.WebParse.png?raw=true)
+![](Assets/WpfNet.AppTheme.png?raw=true)
+![](Assets/WpfNet.png?raw=true)
+![](Assets/WpfNet.WebClient.png?raw=true)
+![](Assets/WpfNet.HttpClient.png?raw=true)
+![](Assets/WpfNet.Proxy.png?raw=true)
+![](Assets/WpfNet.Ping.png?raw=true)
+![](Assets/WpfNet.WebRequest.png?raw=true)
+![](Assets/WpfNet.BrowseSharp.png?raw=true)
+![](Assets/WpfNet.WebParse.png?raw=true)
 
-## TcpClientApp
+## ConsoleTcpClient
 
 [How to use](https://metanit.com/sharp/net/4.1.php)
 
-![](Assets/TcpClientApp.png?raw=true)
+![](Assets/ConsoleTcpClient.png?raw=true)

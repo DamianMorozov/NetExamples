@@ -1,0 +1,53 @@
+﻿<Page x:Class="WpfNet.Views.PageProxy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        DataContext="{StaticResource AppSettings}"
+        Title="Proxy"
+        Loaded="PageProxy_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <CheckBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" IsChecked="{Binding Proxy.Use}"
+                  VerticalAlignment="Center" Content="Use proxy"></CheckBox>
+        
+        <CheckBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" IsChecked="{Binding Proxy.UseDefaultCredentials}"
+                  VerticalAlignment="Center" Content="Use default creds"></CheckBox>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Host" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" ></Label>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5"  Text="{Binding Proxy.Host, Mode=TwoWay}" 
+                 Background="Transparent" VerticalAlignment="Center"></TextBox>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Port" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" ></Label>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5"  Text="{Binding Proxy.Port, Mode=TwoWay}" 
+                 Background="Transparent" VerticalAlignment="Center"></TextBox>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Domain" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" ></Label>
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="5"  
+                 Background="Transparent" Text="{Binding Proxy.Domain, Mode=TwoWay}" VerticalAlignment="Center"></TextBox>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="Username" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" ></Label>
+        <TextBox Grid.Row="5" Grid.Column="1" Margin="5"  
+                 Background="Transparent" Text="{Binding Proxy.Username, Mode=TwoWay}" VerticalAlignment="Center"></TextBox>
+
+        <Label Grid.Row="6" Grid.Column="0" Content="Password" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" ></Label>
+        <TextBox Grid.Row="6" Grid.Column="1" Margin="5"  
+                 Background="Transparent" Text="{Binding Proxy.Password, Mode=TwoWay}" VerticalAlignment="Center"></TextBox>
+    </Grid>
+</Page>

@@ -1,0 +1,80 @@
+﻿<Page x:Class="WpfNet.Views.PagePing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        DataContext="{StaticResource AppSettings}"
+        Title="HttpService"
+        Loaded="PageProxy_Loaded">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <CheckBox Grid.Row="0" Grid.Column="0" Content="Use repeat" Background="Transparent" Margin="5" 
+                  IsChecked="{Binding Path=Ping.UseRepeat, Mode=TwoWay, IsAsync=True}"
+                  HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+        <CheckBox Grid.Row="0" Grid.Column="2" Content="Is task stopped" Background="Transparent" Margin="5" 
+                  IsChecked="{Binding Path=Ping.IsStop, Mode=OneWay, IsAsync=True}"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"></CheckBox>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Content="Hosts list" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   Background="Transparent" Margin="2" ></Label>
+            <Button Name="buttonHostsClear" Grid.Row="0" Grid.Column="1" Background="Transparent" 
+                    Content="Hosts clear" Click="ButtonHostsClear_OnClick" Margin="2"></Button>
+            <TextBox Name="fieldHost" Grid.Row="1" Grid.Column="0" Background="Transparent" 
+                     Text="google.com" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     Margin="2" KeyUp="FieldHost_OnKeyUp"></TextBox>
+            <Button Name="buttonHostAdd" Grid.Row="1" Grid.Column="1" Background="Transparent" 
+                    Content="Host add" Click="ButtonHostAdd_OnClick" Margin="2"></Button>
+            <Label Grid.Row="2" Grid.Column="0" Content="Timeout ping" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   Background="Transparent" Margin="2"></Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Background="Transparent" 
+                     Text="{Binding Path=Ping.TimeoutPing, Mode=TwoWay, IsAsync=True}"
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"></TextBox>
+            <Label Grid.Row="3" Grid.Column="0" Content="Timeout repeat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   Background="Transparent" Margin="2"></Label>
+            <TextBox Grid.Row="3" Grid.Column="1" Background="Transparent" 
+                     Text="{Binding Path=Ping.TimeoutRepeat, Mode=TwoWay, IsAsync=True}"
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"></TextBox>
+            <ListBox Name="listBoxHosts" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" ></ListBox>
+        </Grid>
+
+        <Button Grid.Row="2" Grid.Column="0" Content="Ping start" Background="Transparent" Margin="5" 
+                Click="ButtonPingStart_OnClick"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Content="Ping stop" 
+                Background="Transparent" Click="ButtonPingStop_OnClick" Margin="5"></Button>
+
+        <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="2"
+                 VerticalScrollBarVisibility="Visible" Background="Transparent" 
+                 IsReadOnly="True" 
+                 Text="{Binding Path=Ping.Settings, Mode=OneWay, IsAsync=True}"></TextBox>
+        <TextBox Name="fieldOut" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="2"
+                 VerticalScrollBarVisibility="Visible" Background="Transparent" 
+                 IsReadOnly="True" 
+                 Text="{Binding Path=Ping.Log, Mode=OneWay, IsAsync=True}"></TextBox>
+    </Grid>
+</Page>
